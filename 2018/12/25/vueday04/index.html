@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="vue day04vue-resource的使用使用方法:  在vue.js文件后引入 &amp;lt;script src=&amp;quot;./lib/vue-2.4.0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;   &amp;lt;script src=&amp;quot;./lib/vue-resource-1.3.4.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  当引入完成文件后, 在vue">
+<meta name="keywords" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="天成的个人博客">
+<meta property="og:url" content="https://tianchenglee.github.io/2018/12/25/vueday04/index.html">
+<meta property="og:site_name" content="天成的个人博客">
+<meta property="og:description" content="vue day04vue-resource的使用使用方法:  在vue.js文件后引入 &amp;lt;script src=&amp;quot;./lib/vue-2.4.0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;   &amp;lt;script src=&amp;quot;./lib/vue-resource-1.3.4.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  当引入完成文件后, 在vue">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cn.vuejs.org/images/transition.png">
+<meta property="og:updated_time" content="2018-12-24T16:53:08.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="天成的个人博客">
+<meta name="twitter:description" content="vue day04vue-resource的使用使用方法:  在vue.js文件后引入 &amp;lt;script src=&amp;quot;./lib/vue-2.4.0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;   &amp;lt;script src=&amp;quot;./lib/vue-resource-1.3.4.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  当引入完成文件后, 在vue">
+<meta name="twitter:image" content="https://cn.vuejs.org/images/transition.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://tianchenglee.github.io/2018/12/25/vueday04/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | 天成的个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天成的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Code is my life.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tianchenglee.github.io/2018/12/25/vueday04/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiTiancheng">
+      <meta itemprop="description" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-25 00:53:24 / 修改时间：00:53:08" itemprop="dateCreated datePublished" datetime="2018-12-25T00:53:24+08:00">2018-12-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="vue-day04"><a href="#vue-day04" class="headerlink" title="vue day04"></a>vue day04</h2><h3 id="vue-resource的使用"><a href="#vue-resource的使用" class="headerlink" title="vue-resource的使用"></a>vue-resource的使用</h3><p>使用方法:</p>
+<ol>
+<li><p>在vue.js文件后引入</p>
+<pre><code>&lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;./lib/vue-resource-1.3.4.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>当引入完成文件后, 在vue对象中就会有一个属性: <code>$http</code></p>
+<p> 发送get请求:</p>
+<p> 参数1: URL<br> 参数2: 配置对象</p>
+<p> 配置对象中可以设置一个params属性, 也是一个对象, 用于设置get请求的query参数</p>
+<pre><code>vm.$http.get(&apos;url&apos;, {}).then(result =&gt; {
+    // 请求成功的结果
+})
+</code></pre><p> 发送post请求:</p>
+<p> 参数1: URL<br> 参数2: 表单数据<br> 参数3: 配置对象</p>
+<p> 一般使用post请求时, 配置对象中最好开启<code>emulateJSON: true</code>, 该配置会将表单数据以传统表单格式提交: <code>application/x-www-form-urlencoded</code>的 <code>Content-Type</code></p>
+<pre><code>vm.$http.post(&apos;url&apos;, {name: &apos;zs&apos;}, {emulateJSON: true}).then(result =&gt; {
+    // 请求成功的结果
+})
+</code></pre></li>
+<li><p>全局配置</p>
+<p> 由于在项目开发中, 请求的api根路径一般都是相同的, 而且为了便于后期修改, 需要将请求的根路径进行全局配置:</p>
+<pre><code>Vue.http.options.root = &apos;/root&apos;
+</code></pre><p> <strong>注意: 如果配置了全局的根路径, 想让其生效, 发送请求时URL必须是相对路径, 例如: <code>vm.$http.get(&#39;url&#39;)</code>, 而不是 <code>vm.$http.get(&#39;/url&#39;)</code></strong></p>
+<p> 由于在项目开发中, 每次提交表单数据都需要使用传统表单提交, 所以需要将<code>emulateJSON</code>选项全局开启:</p>
+<pre><code>Vue.http.options.emulateJSON = true
+</code></pre><p> 当开启了全局的emulateJSON选项后, 以后发送post请求, 第三个参数就不需要再配置<code>emulateJSON</code>选项了</p>
+</li>
+</ol>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><p><img src="https://cn.vuejs.org/images/transition.png" alt="官网过渡动画流程图"></p>
+<p>上图描述了在vue中使用过渡类名完成动画的几个阶段, 其中涉及到6个类名:</p>
+<ol>
+<li><p>v-enter</p>
+<p> 设置元素执行入场动画前的样式</p>
+</li>
+<li><p>v-enter-to</p>
+<p> 设置元素执行入场动画完毕后的样式</p>
+</li>
+<li><p>v-leave</p>
+<p> 设置元素执行离场动画前的样式</p>
+</li>
+<li><p>v-leave-to</p>
+<p> 设置元素执行离场动画完毕后的样式</p>
+</li>
+<li><p>v-enter-active</p>
+<p> 设置元素在执行入场动画时的样式</p>
+</li>
+<li><p>v-leave-active</p>
+<p> 设置元素在执行离场动画时的样式</p>
+</li>
+</ol>
+<p>使用动画的步骤:</p>
+<ol>
+<li><p>先在需要加动画的元素(必须得是单元素)外, 包裹一个<code>transition</code>标签, 是由Vue提供的组件</p>
+<pre><code>&lt;transition&gt;
+  &lt;h1 v-if=&quot;flag&quot;&gt;社会毒瘤谢俊&lt;/h1&gt;
+&lt;/transition&gt;
+</code></pre></li>
+<li><p>添加类样式, 设置动画的过渡属性</p>
+<pre><code>.v-enter,
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(200px)
+}
+
+.v-enter-active, 
+.v-leave-active {
+  transition: all 0.5s ease;
+}
+</code></pre></li>
+</ol>
+<p>如果想书写样式时, 不使用默认的v-开头, 可以在transition标签中声明name属性即可, 这个name属性就是类样式的前缀</p>
+<p>用于多个动画场景, 例如: p标签需要平移动画, h1标签需要淡入淡出动画, 为了避免类名冲突, 最好自定义前缀</p>
+<pre><code>&lt;transition name=&quot;xj&quot;&gt;
+  &lt;h1 v-if=&quot;flag&quot;&gt;社会毒瘤谢俊&lt;/h1&gt;
+&lt;/transition&gt;
+</code></pre><p>类样式前缀也要同时修改:</p>
+<pre><code>.xj-enter,
+.xj-leave-to {
+  opacity: 0;
+  transform: translateX(200px)
+}
+
+.xj-enter-active, 
+.xj-leave-active {
+  transition: all 0.5s ease;
+}
+</code></pre><h3 id="列表动画"><a href="#列表动画" class="headerlink" title="列表动画"></a>列表动画</h3><p>不同于单元素动画, 如果是使用v-for循环渲染出来的列表, 需要使用 <code>transition-group</code> 标签包裹</p>
+<pre><code>&lt;transition-group&gt;
+    &lt;li v-for=&quot;(item, i) in list&quot; :key=&quot;item.id&quot; @click=&quot;del(i)&quot;&gt;
+      {{item.id}} --- {{item.name}}
+    &lt;/li&gt;
+&lt;/transition-group&gt;
+</code></pre><p>其他地方同上, 也需要设置过渡的类样式</p>
+<pre><code>.v-enter,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(50px)
+}
+
+.v-enter-active, 
+.v-leave-active {
+  transition: all 0.5s ease;
+}
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/vueday03/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">LiTiancheng</p>
+              <p class="site-description motion-element" itemprop="description">Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-day04"><span class="nav-number">1.</span> <span class="nav-text">vue day04</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-resource的使用"><span class="nav-number">1.1.</span> <span class="nav-text">vue-resource的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-number">1.2.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表动画"><span class="nav-number">1.3.</span> <span class="nav-text">列表动画</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LiTiancheng</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
