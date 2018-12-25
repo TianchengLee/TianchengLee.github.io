@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -108,10 +108,10 @@
 <meta name="keywords" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
 <meta property="og:type" content="website">
 <meta property="og:title" content="天成的个人博客">
-<meta property="og:url" content="https://tianchenglee.github.io/index.html">
+<meta property="og:url" content="http://localhost:4000/index.html">
 <meta property="og:site_name" content="天成的个人博客">
 <meta property="og:description" content="Code is my life.">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天成的个人博客">
 <meta name="twitter:description" content="Code is my life.">
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="https://tianchenglee.github.io/">
+  <link rel="canonical" href="http://localhost:4000/">
 
 
 
@@ -172,7 +172,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -204,7 +204,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -232,7 +232,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
         
@@ -249,7 +249,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
 
@@ -301,10 +301,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tianchenglee.github.io/2018/12/25/vueday01/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday05/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiTiancheng">
+      <meta itemprop="name" content="李天成">
       <meta itemprop="description" content="Code is my life.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -321,7 +321,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/12/25/vueday01/" class="post-title-link" itemprop="url">vueday01</a>
+                <a href="/2018/12/25/vueday05/" class="post-title-link" itemprop="url">vueday05</a>
               
             
           </h1>
@@ -339,14 +339,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2018-12-25 00:56:13 / 修改时间：00:56:30" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
+              <time title="Post created: 2018-12-25 18:56:13 / Updated at: 20:43:09" itemprop="dateCreated datePublished" datetime="2018-12-25T18:56:13+08:00">2018-12-25</time>
             
 
             
@@ -386,99 +386,363 @@
       
         
           
-            <h2 id="vue-day01"><a href="#vue-day01" class="headerlink" title="vue day01"></a>vue day01</h2><h3 id="hello-vue"><a href="#hello-vue" class="headerlink" title="hello vue"></a>hello vue</h3><p>vue就是一个js文件而已</p>
+            <h2 id="vueday05"><a href="#vueday05" class="headerlink" title="vueday05"></a>vueday05</h2><h3 id="列表动画的其他属性"><a href="#列表动画的其他属性" class="headerlink" title="列表动画的其他属性"></a>列表动画的其他属性</h3><h4 id="列表元素同时过渡"><a href="#列表元素同时过渡" class="headerlink" title="列表元素同时过渡"></a>列表元素同时过渡</h4><p>例如将数组中的元素删除时, 其他元素也一起执行动画, 此时所有元素都会加上 <code>v-move</code> 类名, 当前被删除的元素会加上 <code>v-leave-active</code> 类名</p>
+<pre><code>.v-move
+.v-leave-active
+</code></pre><p>所以只需要在<code>v-move</code>中开启过渡, <code>v-leave-active</code>中开启绝对定位即可</p>
+<pre><code>.v-move {
+  transition: all .8s ease;
+}
+.v-leave-active{
+  position: absolute;
+}
+</code></pre><h4 id="appear属性"><a href="#appear属性" class="headerlink" title="appear属性"></a>appear属性</h4><p>列表加载时执行动画</p>
+<pre><code>&lt;transition-group appear&gt;
+    &lt;li v-for=&quot;(item, i) in list&quot; :key=&quot;item.id&quot; @click=&quot;del(i)&quot;&gt;
+        {{item.id}} --- {{item.name}}
+    &lt;/li&gt;
+&lt;/transition-group&gt;
+</code></pre><h4 id="tag属性"><a href="#tag属性" class="headerlink" title="tag属性"></a>tag属性</h4><p>由于transition-group默认会渲染一个span标签包裹, 如果需要自定义标签, 可以通过tag属性来设置:</p>
+<pre><code>&lt;transition-group appear tag=&quot;ul&quot;&gt;
+    &lt;li v-for=&quot;(item, i) in list&quot; :key=&quot;item.id&quot; @click=&quot;del(i)&quot;&gt;
+        {{item.id}} --- {{item.name}}
+    &lt;/li&gt;
+&lt;/transition-group&gt;
+</code></pre><h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><ul>
+<li><p>模块化是指在代码的业务逻辑上进行划分, 保证每个模块的职能单一, 从而方便后期管理维护</p>
+</li>
+<li><p>组件化是指在UI界面的代码上进行划分, 提高项目中多个UI组件的复用性</p>
+</li>
+</ul>
+<h3 id="创建组件的第一种方式"><a href="#创建组件的第一种方式" class="headerlink" title="创建组件的第一种方式"></a>创建组件的第一种方式</h3><ol>
+<li><p>使用Vue.extend创建组件模板对象</p>
+<pre><code>let com1 = Vue.extend({
+    template: &apos;&lt;h1&gt;这是extend创建的组件&lt;/h1&gt;&apos;
+})
+</code></pre></li>
+<li><p>使用Vue.component注册全局组件</p>
+<p> 参数1: 组件名称</p>
+<p> 参数2: 组件的模板对象</p>
+<pre><code>Vue.component(&apos;com1&apos;, com1)
+</code></pre></li>
+<li><p>使用组件</p>
+<p> 在页面中像使用HTML标签一样, 注意: 如果组件名称是驼峰命名, 需要改为 <code>-</code> 连接, 如果全小写, 就是一个单词</p>
+<pre><code>&lt;com1&gt;&lt;/com1&gt;
+</code></pre></li>
+</ol>
+<h3 id="创建组件的第二种方式"><a href="#创建组件的第二种方式" class="headerlink" title="创建组件的第二种方式"></a>创建组件的第二种方式</h3><ol>
+<li><p>使用Vue.component注册全局组件</p>
+<p> 参数1: 组件名称</p>
+<p> 参数2: 组件的模板对象</p>
+<pre><code>Vue.component(&apos;com2&apos;, {
+    template: &apos;&lt;h1&gt;这是extend创建的组件&lt;/h1&gt;&apos;
+})
+</code></pre></li>
+<li><p>使用组件</p>
+<p> 在页面中像使用HTML标签一样, 注意: 如果组件名称是驼峰命名, 需要改为 <code>-</code> 连接, 如果全小写, 就是一个单词</p>
+<pre><code>&lt;com2&gt;&lt;/com2&gt;
+</code></pre></li>
+</ol>
+<p><strong>注意: 不管使用什么方式注册组件, 组件的根元素都只能有一个</strong></p>
+<p>以上两种注册组件的方式都不好用, 因为template是一个字符串, 所以在其中写HTML没有智能提示, 非常不方便, 所以需要使用最后一种方式来注册</p>
+<h3 id="创建组件的第三种方式"><a href="#创建组件的第三种方式" class="headerlink" title="创建组件的第三种方式"></a>创建组件的第三种方式</h3><p>基本和第二种一样, 但是由于第二种写模板没有智能提示, 所以第三种就将模板抽取到HTML中的template标签内部, 在HTML中先写好模板, 注册组件时直接引用即可</p>
 <ol>
-<li><p>新建HTML页面, 引入vue.js文件</p>
-<pre><code>&lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
+<li><p>在HTML中定义好模板</p>
+<pre><code>&lt;template id=&quot;tmp1&quot;&gt;
+    &lt;div&gt;
+        &lt;h1&gt;这是h1&lt;/h1&gt;
+        &lt;h2&gt;这是h2&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
 </code></pre></li>
-<li><p>在页面中准备一个Vue的控制区域</p>
-<pre><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;    
-</code></pre></li>
-<li><p>创建Vue实例</p>
-<pre><code>var vm = new Vue({
-  el: &apos;#app&apos;,
-  data: {
-    hello: &apos;你好啊vuejs!&apos;
-  }
+<li><p>使用Vue.component注册全局组件</p>
+<p> 参数1: 组件名称</p>
+<p> 参数2: 组件的模板对象</p>
+<pre><code>Vue.component(&apos;com3&apos;, {
+    template: &apos;#tmp1&apos;
 })
 </code></pre></li>
-<li><p>在app控制区域中使用vue的指令或者插值表达式将hello数据渲染到页面</p>
-<p> 插值表达式:</p>
-<pre><code>&lt;div id=&quot;app&quot;&gt;
-    &lt;p&gt;
-        {{ hello }}
-    &lt;/p&gt;
-&lt;/div&gt;
-</code></pre><p> v-text:</p>
-<pre><code>&lt;p v-text=&quot;hello&quot;&gt;&lt;/p&gt;
-</code></pre><p> v-html:</p>
-<pre><code>&lt;p v-html=&quot;hello&quot;&gt;&lt;/p&gt;
-</code></pre><p> 如果hello数据中有HTML标签, v-html会解析HTML标签, 而v-text会直接将其解析成纯文本输出</p>
+<li><p>使用组件</p>
+<p> 在页面中像使用HTML标签一样, 注意: 如果组件名称是驼峰命名, 需要改为 <code>-</code> 连接, 如果全小写, 就是一个单词</p>
+<pre><code>&lt;com3&gt;&lt;/com3&gt;
+</code></pre></li>
+</ol>
+<p><strong>注意: 不管使用什么方式注册组件, 组件的根元素都只能有一个</strong></p>
+<h3 id="组件切换"><a href="#组件切换" class="headerlink" title="组件切换"></a>组件切换</h3><p>vscode插件:</p>
+<pre><code>vetur
+vue2 snippets
+</code></pre><ol>
+<li><p>通过v-if来切换组件</p>
+</li>
+<li><p>通过component组件来切换组件</p>
 </li>
 </ol>
-<h3 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h3><p>在vue中, 一切以 <code>v-</code> 开头的都是指令: directive</p>
-<p>插值表达式, Mustache语法也被称为小胡子语法:</p>
-<pre><code>{{ msg }}
-</code></pre><ol>
-<li><p>v-cloak</p>
-<p> 了解即可, 可以结合css解决插值表达式闪烁的问题, 让标签元素默认隐藏, v-cloak的特点是当数据渲染完成后自动显示</p>
-</li>
-<li><p>v-text</p>
-<p> 将数据以<strong>纯文本</strong>的方式渲染到指定标签内部, 会直接覆盖标签内部的内容</p>
-</li>
-<li><p>v-html</p>
-<p> 同v-text, 区别在于可以渲染<strong>HTML标签</strong></p>
-</li>
-<li><p>v-bind</p>
-<p> 做属性绑定的指令, 在标签中绑定title属性: 如果使用了属性绑定, 属性值就会被解析成JS表达式, 所以msg必须在vm实例的data中定义好, 否则会报错</p>
-<pre><code>&lt;input v-bind:title=&quot;msg&quot; /&gt;
-</code></pre><p> 该指令使用非常频繁, 所以有简写形式 是 冒号  <code>:</code></p>
-<pre><code>&lt;input :title=&quot;msg&quot; /&gt;
-</code></pre><p> 而且v-bind可以绑定原生的dom属性, 也可以绑定自定义属性</p>
-</li>
-<li><p>v-on</p>
-<p> 做事件绑定的指令, 简写形式 是 艾特符号 <code>@</code></p>
-<pre><code>&lt;input @mouseover=&quot;clickHandler&quot; v-on:click=&quot;clickHandler&quot; /&gt;
-</code></pre><p> <code>clickHandler</code>必须在vue实例的 methods 节点中定义</p>
-<pre><code>var vm = new Vue({
-  el: &apos;#app&apos;,
-  methods: {
-    clickHandler() {
-      console.log(&apos;秀!&apos;)
+<pre><code>&lt;!-- 这里的component就相当于占位符, 会将comName对应的组件显示在此处, 修改comName的值会切换组件 --&gt;
+&lt;component :is=&quot;comName&quot;&gt;&lt;/component&gt;
+
+data: {
+    comName: &apos;login&apos; // 显示login组件
+}
+</code></pre><h3 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h3><p>因为在vue中, 组件之间的data是相互不能共享的, 即使是子组件也无法直接访问父组件的data</p>
+<p>如果子组件需要用父组件的数据, 必须通过父组件手动传递过去</p>
+<p>通过 <strong>属性绑定</strong> 的方式进行数据传递:</p>
+<p>父组件的data:</p>
+<pre><code>data: {
+    msg: &apos;这是父组件的数据!&apos;
+}
+</code></pre><p>在子组件使用的地方, 进行属性绑定:</p>
+<pre><code>&lt;sub-com :pmsg=&quot;msg&quot;&gt;&lt;/sub-com&gt;
+</code></pre><p>在子组件的props中需要先声明再使用, props和data还有methods等属性平级, 是一个数组, 其中需要定义字符串类型的属性名:</p>
+<pre><code>...
+data() {},
+methods: {},
+props: [&apos;pmsg&apos;] // 需要存放字符串类型的数据, 字符串就是父组件传递过来的属性名
+...
+</code></pre><p>做完以上操作后, 在子组件中就可以随意的使用pMsg属性了, 用法和data中的数据一样</p>
+<p>注意: props中的属性是只读的, data中的属性是可读可写的 </p>
+<p>prop的特点是<strong>单向下行绑定</strong>, 数据是只会通过父组件流向子组件的单向数据流, 子组件修改数据父组件是不会同步的, 而父组件修改数据, 所有引用该数据的子组件都会同步刷新</p>
+<h3 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h3><p>与父组件向子组件传值不同, 子向父传值用的是事件绑定的形式</p>
+<p>父组件的methods中声明事件处理函数:</p>
+<pre><code>methods: {
+    show(data) {
+        console.log(&apos;这是子组件传递过来的数据:&apos; + data)
     }
-  }
-})
-</code></pre><p> 如果需要绑定其他事件, 将click换成其他事件名即可</p>
-</li>
-<li><p>v-model</p>
-<p> <strong>注意: 这是唯一一个实现双向数据绑定的指令, 而且只能用于表单元素, 不需要指定属性, 只能绑定value属性</strong></p>
-<pre><code>&lt;input type=&quot;text&quot; style=&quot;width:100%;&quot; v-model=&quot;msg&quot;&gt;
-</code></pre><p> 如果双向数据绑定, 一定要先在data中定义好msg</p>
-</li>
+}
+</code></pre><p>父组件先给子组件绑定一个自定义事件:</p>
+<pre><code>&lt;sub-com @showinfo=&quot;show&quot;&gt;&lt;/sub-com&gt;
+</code></pre><p>子组件在特定的时机, 通过<code>$emit()</code>方法触发父组件绑定的事件, 将数据传递过去</p>
+<p><code>$emit()</code>:</p>
+<p>参数1: 事件名</p>
+<p>参数2: 传递的数据, 也就是父组件中事件处理函数的参数</p>
+<pre><code>// 当this指向vm对象时均可触发事件
+this.$emit(&apos;showinfo&apos;, &apos;哈哈哈,这是子组件的数据&apos;)
+</code></pre><h3 id="ref的使用"><a href="#ref的使用" class="headerlink" title="ref的使用"></a>ref的使用</h3><p>Vue不提倡我们操作DOM, 但是有些BT的功能可能通过DOM操作更简单的可以完成, 这时候Vue也提供了访问DOM元素的方式: <code>ref</code> 属性</p>
+<p>给DOM元素或组件上设置ref属性:</p>
+<pre><code>&lt;h1 ref=&quot;hh&quot;&gt;这是h1&lt;/h1&gt;
+</code></pre><p>在vm实例中可以直接通过<code>$refs.hh</code>获取到该DOM对象</p>
+<pre><code>this.$refs.hh
+</code></pre><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>路由的目的是为了, 切换不同的组件, 从而实现一个HTML中对应很多组件, 也是所谓的 SPA (Single Page Application) 单页面应用程序</p>
+<p>以上就是所谓的前端路由, 通过#锚点完成组件的切换标识</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/hexo_deploy/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="Code is my life.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/25/hexo_deploy/" class="post-title-link" itemprop="url">使用hexo部署一个博客服务器</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-12-25 18:38:04 / Updated at: 20:43:09" itemprop="dateCreated datePublished" datetime="2018-12-25T18:38:04+08:00">2018-12-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用hexo部署一个博客服务器"><a href="#使用hexo部署一个博客服务器" class="headerlink" title="使用hexo部署一个博客服务器"></a>使用hexo部署一个博客服务器</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ol>
+<li>安装node.js</li>
+<li>安装git</li>
 </ol>
-<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>事件修饰符在事件绑定时, 加在事件名后面</p>
-<pre><code>&lt;input @click.stop=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
-</code></pre><p>事件修饰符可以串联加多个</p>
-<pre><code>&lt;input @click.stop.prevent=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
-</code></pre><ol>
-<li><p>阻止冒泡</p>
-<p> .stop</p>
+<p>如果不会, 自行百度</p>
+<h3 id="安装hexo相关的工具"><a href="#安装hexo相关的工具" class="headerlink" title="安装hexo相关的工具"></a>安装hexo相关的工具</h3><ol>
+<li><p>全局安装 <code>hexo-cli</code></p>
+<pre><code>npm i hexo-cli -g
+</code></pre></li>
+</ol>
+<h3 id="创建一个博客项目"><a href="#创建一个博客项目" class="headerlink" title="创建一个博客项目"></a>创建一个博客项目</h3><ol>
+<li><p>使用<code>hexo init &lt;目录名&gt;</code></p>
+<p> 下载时间较长, 比较耗时, 需要去github下载模板代码</p>
+<pre><code>hexo init hexo-blog
+</code></pre></li>
+<li><p>使用<code>npm install</code>安装项目依赖</p>
+<pre><code>cd hexo-blog
+npm i
+</code></pre></li>
+<li><p>当安装完毕后, 目录中就会有一系列文件, 其中 <code>_config.yml</code> 存放着博客的配置信息</p>
 </li>
-<li><p>阻止浏览器默认行为</p>
-<p> .prevent</p>
+<li><p><code>_config.yml</code> 配置项如下:</p>
+<pre><code>title: 天成的个人博客 # 标题
+subtitle: Code is my life. # 子标题
+description: Code is my life. # 描述
+keywords: Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫 # 关键词, 用于做SEO优化
+author: 李天成 # 作者
+language: zh-CN # 语言
+timezone: Asia/Shanghai # 时区
+</code></pre><p> 更多配置参见官网配置文档</p>
 </li>
-<li><p>使用捕获, 等同于 <code>addEventListener()</code> 第三个参数传入true的效果</p>
-<p> .capture</p>
+<li><p>使用<code>hexo new &lt;文章标题&gt;</code>来写博客</p>
+<pre><code>hexo new frontend_niubi
+</code></pre><p> 执行完该命令后, 会在 <code>./source/_posts/</code>目录下新建一个 <code>frontend_niubi.md</code> 文件</p>
+<p> 之后就可以随心所欲的写笔记了!</p>
 </li>
-<li><p>只有点击当前元素自身才会触发事件, 如果通过冒泡或者捕获传递过来的事件不会触发</p>
-<p> .self</p>
+<li><p>写完笔记后, 使用 <code>hexo g</code> 命令结合主题(配置文件中: theme: landscape)和笔记(./srouce/_posts/目录中)生成HTML/css/js静态文件 </p>
+<pre><code>hexo g
+</code></pre><p> 执行完命令后, 会在 <code>./public</code> 中生成静态文件</p>
 </li>
-<li><p>只触发一次</p>
-<p> .once</p>
+<li><p>最后只需要执行<code>hexo server</code> 启动服务器, 即可看到博客了!</p>
+<pre><code>hexo server
+</code></pre><p> 默认开启端口是4000, 通过 -p 可以指定端口号</p>
+<pre><code>hexo server -p 80
+</code></pre></li>
+</ol>
+<h2 id="hexo与github-io爱的结晶"><a href="#hexo与github-io爱的结晶" class="headerlink" title="hexo与github.io爱的结晶"></a>hexo与github.io爱的结晶</h2><p>Github给每个用户都提供了一个轻量级的web服务器, 每个人的域名是: <code>用户名.github.io</code></p>
+<p>非常适合做博客, 这里就可以结合hexo生成的静态文件部署一个属于自己的个人博客</p>
+<ol>
+<li><p>在github上新建一个仓库, 仓库名必须是<code>github用户名.github.io</code></p>
 </li>
-<li><p>在移动端使用scroll事件时建议加上, 可以提高性能</p>
-<p> .passive</p>
-</li>
+<li><p>使用hexo的deploy功能完成项目的自动化部署</p>
+<p> 在部署之前, 一定要先配置好部署的参数</p>
+<p> hexo支持五个部署方式, 我们采取git</p>
+<p> 首先在<code>_config.yml</code>配置文件中的 <code>deploy:</code> 节点下配置一下 <code>type</code></p>
+<pre><code>deploy: 
+      type: git
+</code></pre><p> 如果使用的是git部署, 必须先装一个包:</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p> 装完以后修改配置:</p>
+<pre><code>deploy:
+  type: git # 类型为git
+  repo: &lt;repository url&gt;  # 仓库地址
+  branch: [branch] # 分支名
+  message: [message] # 
+</code></pre><p> 配置完成后, 执行<code>hexo g</code> 然后执行 <code>hexo d</code></p>
+<p> hexo d是在将生成的静态文件, push到远程刚刚建好的仓库中, 而刚刚建的那个仓库正好可以通过<code>用户名.github.io</code>直接访问, 就是一个web服务器</p>
+<pre><code>hexo g
+hexo d
+</code></pre></li>
+</ol>
+<h2 id="设置hexo的主题"><a href="#设置hexo的主题" class="headerlink" title="设置hexo的主题"></a>设置hexo的主题</h2><p><strong>墙裂推荐next主题, 不接受反驳!!!</strong></p>
+<ol>
+<li><p>安装</p>
+<p> 进入hexo博客的目录</p>
+<pre><code>cd hexo-blog
+</code></pre><p> 将next的源码克隆到当前目录的themes目录下</p>
+<pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next
+</code></pre></li>
 </ol>
 
           
@@ -536,10 +800,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tianchenglee.github.io/2018/12/25/vueday02/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday02/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiTiancheng">
+      <meta itemprop="name" content="李天成">
       <meta itemprop="description" content="Code is my life.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -574,14 +838,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2018-12-25 00:56:13 / 修改时间：00:56:38" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
+              <time title="Post created: 2018-12-25 00:56:13 / Updated at: 00:56:38" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
             
 
             
@@ -837,10 +1101,245 @@ outer()()
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tianchenglee.github.io/2018/12/25/vueday03/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday01/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiTiancheng">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="Code is my life.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/25/vueday01/" class="post-title-link" itemprop="url">vueday01</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-12-25 00:56:13 / Updated at: 00:56:30" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="vue-day01"><a href="#vue-day01" class="headerlink" title="vue day01"></a>vue day01</h2><h3 id="hello-vue"><a href="#hello-vue" class="headerlink" title="hello vue"></a>hello vue</h3><p>vue就是一个js文件而已</p>
+<ol>
+<li><p>新建HTML页面, 引入vue.js文件</p>
+<pre><code>&lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>在页面中准备一个Vue的控制区域</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;    
+</code></pre></li>
+<li><p>创建Vue实例</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#app&apos;,
+  data: {
+    hello: &apos;你好啊vuejs!&apos;
+  }
+})
+</code></pre></li>
+<li><p>在app控制区域中使用vue的指令或者插值表达式将hello数据渲染到页面</p>
+<p> 插值表达式:</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;
+        {{ hello }}
+    &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p> v-text:</p>
+<pre><code>&lt;p v-text=&quot;hello&quot;&gt;&lt;/p&gt;
+</code></pre><p> v-html:</p>
+<pre><code>&lt;p v-html=&quot;hello&quot;&gt;&lt;/p&gt;
+</code></pre><p> 如果hello数据中有HTML标签, v-html会解析HTML标签, 而v-text会直接将其解析成纯文本输出</p>
+</li>
+</ol>
+<h3 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h3><p>在vue中, 一切以 <code>v-</code> 开头的都是指令: directive</p>
+<p>插值表达式, Mustache语法也被称为小胡子语法:</p>
+<pre><code>{{ msg }}
+</code></pre><ol>
+<li><p>v-cloak</p>
+<p> 了解即可, 可以结合css解决插值表达式闪烁的问题, 让标签元素默认隐藏, v-cloak的特点是当数据渲染完成后自动显示</p>
+</li>
+<li><p>v-text</p>
+<p> 将数据以<strong>纯文本</strong>的方式渲染到指定标签内部, 会直接覆盖标签内部的内容</p>
+</li>
+<li><p>v-html</p>
+<p> 同v-text, 区别在于可以渲染<strong>HTML标签</strong></p>
+</li>
+<li><p>v-bind</p>
+<p> 做属性绑定的指令, 在标签中绑定title属性: 如果使用了属性绑定, 属性值就会被解析成JS表达式, 所以msg必须在vm实例的data中定义好, 否则会报错</p>
+<pre><code>&lt;input v-bind:title=&quot;msg&quot; /&gt;
+</code></pre><p> 该指令使用非常频繁, 所以有简写形式 是 冒号  <code>:</code></p>
+<pre><code>&lt;input :title=&quot;msg&quot; /&gt;
+</code></pre><p> 而且v-bind可以绑定原生的dom属性, 也可以绑定自定义属性</p>
+</li>
+<li><p>v-on</p>
+<p> 做事件绑定的指令, 简写形式 是 艾特符号 <code>@</code></p>
+<pre><code>&lt;input @mouseover=&quot;clickHandler&quot; v-on:click=&quot;clickHandler&quot; /&gt;
+</code></pre><p> <code>clickHandler</code>必须在vue实例的 methods 节点中定义</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#app&apos;,
+  methods: {
+    clickHandler() {
+      console.log(&apos;秀!&apos;)
+    }
+  }
+})
+</code></pre><p> 如果需要绑定其他事件, 将click换成其他事件名即可</p>
+</li>
+<li><p>v-model</p>
+<p> <strong>注意: 这是唯一一个实现双向数据绑定的指令, 而且只能用于表单元素, 不需要指定属性, 只能绑定value属性</strong></p>
+<pre><code>&lt;input type=&quot;text&quot; style=&quot;width:100%;&quot; v-model=&quot;msg&quot;&gt;
+</code></pre><p> 如果双向数据绑定, 一定要先在data中定义好msg</p>
+</li>
+</ol>
+<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>事件修饰符在事件绑定时, 加在事件名后面</p>
+<pre><code>&lt;input @click.stop=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
+</code></pre><p>事件修饰符可以串联加多个</p>
+<pre><code>&lt;input @click.stop.prevent=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
+</code></pre><ol>
+<li><p>阻止冒泡</p>
+<p> .stop</p>
+</li>
+<li><p>阻止浏览器默认行为</p>
+<p> .prevent</p>
+</li>
+<li><p>使用捕获, 等同于 <code>addEventListener()</code> 第三个参数传入true的效果</p>
+<p> .capture</p>
+</li>
+<li><p>只有点击当前元素自身才会触发事件, 如果通过冒泡或者捕获传递过来的事件不会触发</p>
+<p> .self</p>
+</li>
+<li><p>只触发一次</p>
+<p> .once</p>
+</li>
+<li><p>在移动端使用scroll事件时建议加上, 可以提高性能</p>
+<p> .passive</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday03/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
       <meta itemprop="description" content="Code is my life.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -875,14 +1374,14 @@ outer()()
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2018-12-25 00:56:13 / 修改时间：00:56:46" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
+              <time title="Post created: 2018-12-25 00:56:13 / Updated at: 00:56:46" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
             
 
             
@@ -1087,10 +1586,10 @@ Vue.config.keyCodes.f2 = 113
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tianchenglee.github.io/2018/12/25/vueday04/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday04/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LiTiancheng">
+      <meta itemprop="name" content="李天成">
       <meta itemprop="description" content="Code is my life.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -1125,14 +1624,14 @@ Vue.config.keyCodes.f2 = 113
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2018-12-25 00:56:13 / 修改时间：00:56:54" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
+              <time title="Post created: 2018-12-25 00:56:13 / Updated at: 00:56:54" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
             
 
             
@@ -1349,7 +1848,7 @@ Vue.config.keyCodes.f2 = 113
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">LiTiancheng</p>
+              <p class="site-author-name" itemprop="name">李天成</p>
               <p class="site-description motion-element" itemprop="description">Code is my life.</p>
           </div>
 
@@ -1360,8 +1859,8 @@ Vue.config.keyCodes.f2 = 113
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -1407,7 +1906,7 @@ Vue.config.keyCodes.f2 = 113
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">LiTiancheng</span>
+  <span class="author" itemprop="copyrightHolder">李天成</span>
 
   
 
@@ -1415,7 +1914,7 @@ Vue.config.keyCodes.f2 = 113
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -1423,7 +1922,7 @@ Vue.config.keyCodes.f2 = 113
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
 
 
 
