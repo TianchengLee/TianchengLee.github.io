@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="vueday05列表动画的其他属性列表元素同时过渡例如将数组中的元素删除时, 其他元素也一起执行动画, 此时所有元素都会加上 v-move 类名, 当前被删除的元素会加上 v-leave-active 类名 .v-move .v-leave-active 所以只需要在v-move中开启过渡, v-leave-active中开启绝对定位即可 .v-move {   transition: all .">
+<meta name="keywords" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vueday05">
+<meta property="og:url" content="http://localhost:4000/2018/12/25/vueday05/index.html">
+<meta property="og:site_name" content="天成的个人博客">
+<meta property="og:description" content="vueday05列表动画的其他属性列表元素同时过渡例如将数组中的元素删除时, 其他元素也一起执行动画, 此时所有元素都会加上 v-move 类名, 当前被删除的元素会加上 v-leave-active 类名 .v-move .v-leave-active 所以只需要在v-move中开启过渡, v-leave-active中开启绝对定位即可 .v-move {   transition: all .">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-25T13:12:34.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vueday05">
+<meta name="twitter:description" content="vueday05列表动画的其他属性列表元素同时过渡例如将数组中的元素删除时, 其他元素也一起执行动画, 此时所有元素都会加上 v-move 类名, 当前被删除的元素会加上 v-leave-active 类名 .v-move .v-leave-active 所以只需要在v-move中开启过渡, v-leave-active中开启绝对定位即可 .v-move {   transition: all .">
+
+
+
+
+
+
+  <link rel="canonical" href="http://localhost:4000/2018/12/25/vueday05/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vueday05 | 天成的个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天成的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Code is my life.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday05/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="Code is my life.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vueday05
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-25 18:56:13 / 修改时间：21:12:34" itemprop="dateCreated datePublished" datetime="2018-12-25T18:56:13+08:00">2018-12-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/25/vueday05/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/25/vueday05/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="vueday05"><a href="#vueday05" class="headerlink" title="vueday05"></a>vueday05</h2><h3 id="列表动画的其他属性"><a href="#列表动画的其他属性" class="headerlink" title="列表动画的其他属性"></a>列表动画的其他属性</h3><h4 id="列表元素同时过渡"><a href="#列表元素同时过渡" class="headerlink" title="列表元素同时过渡"></a>列表元素同时过渡</h4><p>例如将数组中的元素删除时, 其他元素也一起执行动画, 此时所有元素都会加上 <code>v-move</code> 类名, 当前被删除的元素会加上 <code>v-leave-active</code> 类名</p>
+<pre><code>.v-move
+.v-leave-active
+</code></pre><p>所以只需要在<code>v-move</code>中开启过渡, <code>v-leave-active</code>中开启绝对定位即可</p>
+<pre><code>.v-move {
+  transition: all .8s ease;
+}
+.v-leave-active{
+  position: absolute;
+}
+</code></pre><h4 id="appear属性"><a href="#appear属性" class="headerlink" title="appear属性"></a>appear属性</h4><p>列表加载时执行动画</p>
+<pre><code>&lt;transition-group appear&gt;
+    &lt;li v-for=&quot;(item, i) in list&quot; :key=&quot;item.id&quot; @click=&quot;del(i)&quot;&gt;
+        {{item.id}} --- {{item.name}}
+    &lt;/li&gt;
+&lt;/transition-group&gt;
+</code></pre><h4 id="tag属性"><a href="#tag属性" class="headerlink" title="tag属性"></a>tag属性</h4><p>由于transition-group默认会渲染一个span标签包裹, 如果需要自定义标签, 可以通过tag属性来设置:</p>
+<pre><code>&lt;transition-group appear tag=&quot;ul&quot;&gt;
+    &lt;li v-for=&quot;(item, i) in list&quot; :key=&quot;item.id&quot; @click=&quot;del(i)&quot;&gt;
+        {{item.id}} --- {{item.name}}
+    &lt;/li&gt;
+&lt;/transition-group&gt;
+</code></pre><h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><ul>
+<li><p>模块化是指在代码的业务逻辑上进行划分, 保证每个模块的职能单一, 从而方便后期管理维护</p>
+</li>
+<li><p>组件化是指在UI界面的代码上进行划分, 提高项目中多个UI组件的复用性</p>
+</li>
+</ul>
+<h3 id="创建组件的第一种方式"><a href="#创建组件的第一种方式" class="headerlink" title="创建组件的第一种方式"></a>创建组件的第一种方式</h3><ol>
+<li><p>使用Vue.extend创建组件模板对象</p>
+<pre><code>let com1 = Vue.extend({
+    template: &apos;&lt;h1&gt;这是extend创建的组件&lt;/h1&gt;&apos;
+})
+</code></pre></li>
+<li><p>使用Vue.component注册全局组件</p>
+<p> 参数1: 组件名称</p>
+<p> 参数2: 组件的模板对象</p>
+<pre><code>Vue.component(&apos;com1&apos;, com1)
+</code></pre></li>
+<li><p>使用组件</p>
+<p> 在页面中像使用HTML标签一样, 注意: 如果组件名称是驼峰命名, 需要改为 <code>-</code> 连接, 如果全小写, 就是一个单词</p>
+<pre><code>&lt;com1&gt;&lt;/com1&gt;
+</code></pre></li>
+</ol>
+<h3 id="创建组件的第二种方式"><a href="#创建组件的第二种方式" class="headerlink" title="创建组件的第二种方式"></a>创建组件的第二种方式</h3><ol>
+<li><p>使用Vue.component注册全局组件</p>
+<p> 参数1: 组件名称</p>
+<p> 参数2: 组件的模板对象</p>
+<pre><code>Vue.component(&apos;com2&apos;, {
+    template: &apos;&lt;h1&gt;这是extend创建的组件&lt;/h1&gt;&apos;
+})
+</code></pre></li>
+<li><p>使用组件</p>
+<p> 在页面中像使用HTML标签一样, 注意: 如果组件名称是驼峰命名, 需要改为 <code>-</code> 连接, 如果全小写, 就是一个单词</p>
+<pre><code>&lt;com2&gt;&lt;/com2&gt;
+</code></pre></li>
+</ol>
+<p><strong>注意: 不管使用什么方式注册组件, 组件的根元素都只能有一个</strong></p>
+<p>以上两种注册组件的方式都不好用, 因为template是一个字符串, 所以在其中写HTML没有智能提示, 非常不方便, 所以需要使用最后一种方式来注册</p>
+<h3 id="创建组件的第三种方式"><a href="#创建组件的第三种方式" class="headerlink" title="创建组件的第三种方式"></a>创建组件的第三种方式</h3><p>基本和第二种一样, 但是由于第二种写模板没有智能提示, 所以第三种就将模板抽取到HTML中的template标签内部, 在HTML中先写好模板, 注册组件时直接引用即可</p>
+<ol>
+<li><p>在HTML中定义好模板</p>
+<pre><code>&lt;template id=&quot;tmp1&quot;&gt;
+    &lt;div&gt;
+        &lt;h1&gt;这是h1&lt;/h1&gt;
+        &lt;h2&gt;这是h2&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre></li>
+<li><p>使用Vue.component注册全局组件</p>
+<p> 参数1: 组件名称</p>
+<p> 参数2: 组件的模板对象</p>
+<pre><code>Vue.component(&apos;com3&apos;, {
+    template: &apos;#tmp1&apos;
+})
+</code></pre></li>
+<li><p>使用组件</p>
+<p> 在页面中像使用HTML标签一样, 注意: 如果组件名称是驼峰命名, 需要改为 <code>-</code> 连接, 如果全小写, 就是一个单词</p>
+<pre><code>&lt;com3&gt;&lt;/com3&gt;
+</code></pre></li>
+</ol>
+<p><strong>注意: 不管使用什么方式注册组件, 组件的根元素都只能有一个</strong></p>
+<h3 id="组件切换"><a href="#组件切换" class="headerlink" title="组件切换"></a>组件切换</h3><p>vscode插件:</p>
+<pre><code>vetur
+vue2 snippets
+</code></pre><ol>
+<li><p>通过v-if来切换组件</p>
+</li>
+<li><p>通过component组件来切换组件</p>
+</li>
+</ol>
+<pre><code>&lt;!-- 这里的component就相当于占位符, 会将comName对应的组件显示在此处, 修改comName的值会切换组件 --&gt;
+&lt;component :is=&quot;comName&quot;&gt;&lt;/component&gt;
+
+data: {
+    comName: &apos;login&apos; // 显示login组件
+}
+</code></pre><h3 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h3><p>因为在vue中, 组件之间的data是相互不能共享的, 即使是子组件也无法直接访问父组件的data</p>
+<p>如果子组件需要用父组件的数据, 必须通过父组件手动传递过去</p>
+<p>通过 <strong>属性绑定</strong> 的方式进行数据传递:</p>
+<p>父组件的data:</p>
+<pre><code>data: {
+    msg: &apos;这是父组件的数据!&apos;
+}
+</code></pre><p>在子组件使用的地方, 进行属性绑定:</p>
+<pre><code>&lt;sub-com :pmsg=&quot;msg&quot;&gt;&lt;/sub-com&gt;
+</code></pre><p>在子组件的props中需要先声明再使用, props和data还有methods等属性平级, 是一个数组, 其中需要定义字符串类型的属性名:</p>
+<pre><code>...
+data() {},
+methods: {},
+props: [&apos;pmsg&apos;] // 需要存放字符串类型的数据, 字符串就是父组件传递过来的属性名
+...
+</code></pre><p>做完以上操作后, 在子组件中就可以随意的使用pMsg属性了, 用法和data中的数据一样</p>
+<p>注意: props中的属性是只读的, data中的属性是可读可写的 </p>
+<p>prop的特点是<strong>单向下行绑定</strong>, 数据是只会通过父组件流向子组件的单向数据流, 子组件修改数据父组件是不会同步的, 而父组件修改数据, 所有引用该数据的子组件都会同步刷新</p>
+<h3 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h3><p>与父组件向子组件传值不同, 子向父传值用的是事件绑定的形式</p>
+<p>父组件的methods中声明事件处理函数:</p>
+<pre><code>methods: {
+    show(data) {
+        console.log(&apos;这是子组件传递过来的数据:&apos; + data)
+    }
+}
+</code></pre><p>父组件先给子组件绑定一个自定义事件:</p>
+<pre><code>&lt;sub-com @showinfo=&quot;show&quot;&gt;&lt;/sub-com&gt;
+</code></pre><p>子组件在特定的时机, 通过<code>$emit()</code>方法触发父组件绑定的事件, 将数据传递过去</p>
+<p><code>$emit()</code>:</p>
+<p>参数1: 事件名</p>
+<p>参数2: 传递的数据, 也就是父组件中事件处理函数的参数</p>
+<pre><code>// 当this指向vm对象时均可触发事件
+this.$emit(&apos;showinfo&apos;, &apos;哈哈哈,这是子组件的数据&apos;)
+</code></pre><h3 id="ref的使用"><a href="#ref的使用" class="headerlink" title="ref的使用"></a>ref的使用</h3><p>Vue不提倡我们操作DOM, 但是有些BT的功能可能通过DOM操作更简单的可以完成, 这时候Vue也提供了访问DOM元素的方式: <code>ref</code> 属性</p>
+<p>给DOM元素或组件上设置ref属性:</p>
+<pre><code>&lt;h1 ref=&quot;hh&quot;&gt;这是h1&lt;/h1&gt;
+</code></pre><p>在vm实例中可以直接通过<code>$refs.hh</code>获取到该DOM对象</p>
+<pre><code>this.$refs.hh
+</code></pre><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>路由的目的是为了, 切换不同的组件, 从而实现一个HTML中对应很多组件, 也是所谓的 SPA (Single Page Application) 单页面应用程序</p>
+<p>以上就是所谓的前端路由, 通过#锚点完成组件的切换标识</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/hexo_deploy/" rel="next" title="使用hexo部署一个博客服务器">
+                <i class="fa fa-chevron-left"></i> 使用hexo部署一个博客服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李天成</p>
+              <p class="site-description motion-element" itemprop="description">Code is my life.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vueday05"><span class="nav-number">1.</span> <span class="nav-text">vueday05</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表动画的其他属性"><span class="nav-number">1.1.</span> <span class="nav-text">列表动画的其他属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表元素同时过渡"><span class="nav-number">1.1.1.</span> <span class="nav-text">列表元素同时过渡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#appear属性"><span class="nav-number">1.1.2.</span> <span class="nav-text">appear属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tag属性"><span class="nav-number">1.1.3.</span> <span class="nav-text">tag属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件化"><span class="nav-number">1.2.</span> <span class="nav-text">组件化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建组件的第一种方式"><span class="nav-number">1.3.</span> <span class="nav-text">创建组件的第一种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建组件的第二种方式"><span class="nav-number">1.4.</span> <span class="nav-text">创建组件的第二种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建组件的第三种方式"><span class="nav-number">1.5.</span> <span class="nav-text">创建组件的第三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件切换"><span class="nav-number">1.6.</span> <span class="nav-text">组件切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父组件向子组件传值"><span class="nav-number">1.7.</span> <span class="nav-text">父组件向子组件传值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子组件向父组件传值"><span class="nav-number">1.8.</span> <span class="nav-text">子组件向父组件传值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref的使用"><span class="nav-number">1.9.</span> <span class="nav-text">ref的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由"><span class="nav-number">1.10.</span> <span class="nav-text">路由</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李天成</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'IewqjGGWrtQhLdEX5ysm5fKf-gzGzoHsz',
+        appKey: 'f2kiSivj8SPBWDJ0hHFmbNK3',
+        placeholder: '请和谐评论哦~~',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: 
+    });
+  </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

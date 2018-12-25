@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="vue day02往期知识点回顾 创建对象的方式: // 对象字面量 var obj = {} // new Object()  // 数组字面量 var arr = [] // new Array()  // 正则字面量 var regex = /\w+/ // new RegExp()  // 使用Object构造函数创建对象 var obj2 = new Object()  // 自定义工厂">
+<meta name="keywords" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vueday02">
+<meta property="og:url" content="http://localhost:4000/2018/12/25/vueday02/index.html">
+<meta property="og:site_name" content="天成的个人博客">
+<meta property="og:description" content="vue day02往期知识点回顾 创建对象的方式: // 对象字面量 var obj = {} // new Object()  // 数组字面量 var arr = [] // new Array()  // 正则字面量 var regex = /\w+/ // new RegExp()  // 使用Object构造函数创建对象 var obj2 = new Object()  // 自定义工厂">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-25T13:12:25.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vueday02">
+<meta name="twitter:description" content="vue day02往期知识点回顾 创建对象的方式: // 对象字面量 var obj = {} // new Object()  // 数组字面量 var arr = [] // new Array()  // 正则字面量 var regex = /\w+/ // new RegExp()  // 使用Object构造函数创建对象 var obj2 = new Object()  // 自定义工厂">
+
+
+
+
+
+
+  <link rel="canonical" href="http://localhost:4000/2018/12/25/vueday02/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vueday02 | 天成的个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天成的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Code is my life.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday02/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="Code is my life.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vueday02
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-25 00:56:13 / 修改时间：21:12:25" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/25/vueday02/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/25/vueday02/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="vue-day02"><a href="#vue-day02" class="headerlink" title="vue day02"></a>vue day02</h2><h3 id="往期知识点回顾"><a href="#往期知识点回顾" class="headerlink" title="往期知识点回顾"></a>往期知识点回顾</h3><ol>
+<li><p>创建对象的方式:</p>
+<pre><code>// 对象字面量
+var obj = {} // new Object()
+
+// 数组字面量
+var arr = [] // new Array()
+
+// 正则字面量
+var regex = /\w+/ // new RegExp()
+
+// 使用Object构造函数创建对象
+var obj2 = new Object()
+
+// 自定义工厂函数创建对象
+var obj3 = createObj(&apos;zs&apos;)
+
+function createObj(name) {
+    return {
+        name: name
+    }
+}
+
+// 自定义构造函数创建对象
+var obj4 = new Student(&apos;ls&apos;)
+
+function Student(name) {
+    this.name = name
+}
+
+// 判断对象的类型, typeof判断对象永远都是 &apos;object&apos;
+console.log(typeof obj4) // &apos;object&apos;
+
+// instanceof 判断对象的具体类型
+// instanceof 判断依据 是看对象是否在 该构造函数的原型链上
+// A instanceof B 就是看B是否在A的原型链上
+console.log(obj4 instanceof Student) // true
+console.log(obj4 instanceof Object) // true
+</code></pre><p> 总结: 创建对象 永远都离不开 构造函数, 最终一定是 new 构造函数创建出来的对象, 所以不存在几种创建对象的方式, 只有一种, 就是通过构造函数创建对象</p>
+</li>
+<li><p>闭包</p>
+<p> 函数内部包含一个函数, 在内部函数中访问了外部函数中的局部成员</p>
+<pre><code>function outer() {
+    var a = 10
+    function inner() {
+        // 在下面这行代码执行时就会产生 closure 闭包空间
+        var b = a + 20
+    }
+    return inner
+}
+
+outer()()
+</code></pre><p> 在开发中尽量减少使用闭包, 因为闭包一定会导致内存泄漏</p>
+<p> 内存泄漏: 本该被释放的内存, 没有被释放</p>
+</li>
+<li><p>事件委托(事件代理)</p>
+<blockquote>
+<p>一般用在动态创建元素还需要绑定事件时</p>
+</blockquote>
+<blockquote>
+<p>因为直接绑定事件, 页面加载时就会绑定一次, 但是动态添加的元素就无法被绑定事件了, 而事件委托的原理是依赖于事件冒泡, 也就是说事件被绑定在父元素身上, 如果将来有新加入的子元素也会响应事件</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="设置类样式"><a href="#设置类样式" class="headerlink" title="设置类样式"></a>设置类样式</h3><p>总结来说使用属性绑定的方式设置样式, 一般就是设置 对象 或 数组</p>
+<ol>
+<li><p>设置一个数组</p>
+<p> 适合同时设置多个固定样式 (一般不用)</p>
+<pre><code>&lt;h1 :class=&quot;[&apos;red&apos;, &apos;thin&apos;]&quot;&gt;这是一个很大很大的H1，大到你无法想象！！！&lt;/h1&gt;
+</code></pre><p> 如果其中某些<strong>样式需要动态切换</strong>, 根据标记切换</p>
+<p> 在js中属性名如果是合法的变量名, 可以不用加引号, 以下代码表示h1固定样式是red和thin, active样式是根据flag的true或false动态切换</p>
+<p> flag需要在data中定义</p>
+<pre><code>&lt;h1 :class=&quot;[&apos;red&apos;, &apos;thin&apos;, { active: flag }]&quot;&gt;这是一个很大很大的H1，大到你无法想象！！！&lt;/h1&gt;
+</code></pre><p> 此方式适合多个固定样式结合少量动态切换的样式使用</p>
+</li>
+<li><p>设置一个对象</p>
+<p> 适合多个动态切换的样式, 少部分固定样式使用, 因为固定样式也需要手动加上true, 不如直接用数组来设置样式</p>
+<pre><code>&lt;h1 :class=&quot;{ red: true, thin: false, active: true }&quot;&gt;这是一个很大很大的H1，大到你无法想象！！！&lt;/h1&gt;
+</code></pre></li>
+<li><p>使用字符串拼接动态操作类样式 (<strong>不推荐!!!</strong>)</p>
+<p> 因为字符串操作容易出现问题, 所以尽量不要使用字符串拼接的方式去动态修改类样式</p>
+<pre><code>&lt;h1 :class=&quot;&apos;active red&apos; + (flag ? &apos; thin&apos; : &apos;&apos;)&quot;&gt;这是一个很大很大的H1，大到你无法想象！！！&lt;/h1&gt;
+</code></pre></li>
+</ol>
+<h3 id="设置行内样式"><a href="#设置行内样式" class="headerlink" title="设置行内样式"></a>设置行内样式</h3><p>将样式对象挂载到data节点中:</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#app&apos;,
+  data: {
+    styleObj1: { color: &apos;red&apos;, &apos;font-weight&apos;: 200 },
+    styleObj2: { &apos;font-style&apos;: &apos;italic&apos; }
+  },
+  methods: {}
+})
+</code></pre><ol>
+<li><p>设置一个对象(比较常用)</p>
+<pre><code>&lt;h1 :style=&quot;styleObj1&quot;&gt;这是一个h1&lt;/h1&gt;
+</code></pre></li>
+<li><p>设置一个数组 (数组中放多个样式对象, 可以合并)</p>
+<pre><code>&lt;h1 :style=&quot;[ styleObj1, styleObj2 ]&quot;&gt;这是一个h1&lt;/h1&gt;
+</code></pre></li>
+</ol>
+<h3 id="v-for-列表渲染"><a href="#v-for-列表渲染" class="headerlink" title="v-for 列表渲染"></a>v-for 列表渲染</h3><p>准备渲染的数据:</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#app&apos;,
+  data: {
+    list: [1, 2, 3, 4, 5, 6],
+    users: [
+      { id: 1, name: &apos;zs1&apos; },
+      { id: 2, name: &apos;zs2&apos; },
+      { id: 3, name: &apos;zs3&apos; },
+      { id: 4, name: &apos;zs4&apos; }
+    ],
+    user: {
+      id: 1,
+      name: &apos;托尼·屎大颗&apos;,
+      gender: &apos;男&apos;
+    }
+  }
+})
+</code></pre><ol>
+<li><p>渲染普通数组</p>
+<pre><code>&lt;p v-for=&quot;(item, index) in list&quot;&gt;
+    每一项: {{ item }}
+    索引: {{ index }}
+&lt;/p&gt;
+</code></pre></li>
+<li><p>渲染对象数组</p>
+<pre><code>&lt;p v-for=&quot;(user, index) in users&quot;&gt;
+    用户ID: {{ user.id }}
+    用户名: {{ user.name }}
+    索引: {{ index }}
+&lt;/p&gt;
+</code></pre></li>
+<li><p>渲染对象</p>
+<pre><code>&lt;p v-for=&quot;(val, key) in user&quot;&gt;
+    键: {{ key }}
+    值: {{ val }}
+&lt;/p&gt;
+</code></pre></li>
+<li><p>迭代数字</p>
+<p> item从1开始到20结束, 如果要当成索引用, 可以手动 -1</p>
+<pre><code>&lt;p v-for=&quot;item in 20&quot;&gt;
+    {{ item }}
+&lt;/p&gt;
+</code></pre></li>
+</ol>
+<h3 id="v-for-中的-key-属性"><a href="#v-for-中的-key-属性" class="headerlink" title="v-for 中的 key 属性"></a>v-for 中的 key 属性</h3><ul>
+<li><p>结论: 除非使用的列表非常简单, 或者追求极致的性能体验, <strong>都建议在使用v-for时加上 key 属性</strong></p>
+</li>
+<li><p>原理: 由于使用v-for渲染列表时, vue不会记录每个列表项和数据之间的关系, 都是统一按照索引进行渲染的, 如果此时有一个复选框表单元素被勾选, 然后将新的元素插入到列表的前面, 导致整个列表顺序发生变化, 那么复选框也会跟随索引而勾选 不会跟随数据勾选</p>
+</li>
+<li><p>解决方式: 在使用v-for时加上 :key 属性绑定, 绑定的值为每项数据的唯一标识, 而且数据类型必须是number / string 一般都用id作为唯一标识, 如果没有id时也可以使用索引 实在不行用name也行</p>
+</li>
+</ul>
+<h3 id="v-if-和-v-show"><a href="#v-if-和-v-show" class="headerlink" title="v-if 和 v-show"></a>v-if 和 v-show</h3><ul>
+<li>v-if和v-show都是用于控制元素的显示隐藏</li>
+<li>v-if有较高的切换渲染消耗</li>
+<li>v-show有较高的初始渲染消耗</li>
+</ul>
+<p>总结: 如果需要频繁的切换显示隐藏推荐使用v-show, 如果只需要一次切换, 或者一次都没有, 则使用v-if</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/vueday03/" rel="next" title="vueday03">
+                <i class="fa fa-chevron-left"></i> vueday03
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/25/vueday01/" rel="prev" title="vueday01">
+                vueday01 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李天成</p>
+              <p class="site-description motion-element" itemprop="description">Code is my life.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-day02"><span class="nav-number">1.</span> <span class="nav-text">vue day02</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#往期知识点回顾"><span class="nav-number">1.1.</span> <span class="nav-text">往期知识点回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置类样式"><span class="nav-number">1.2.</span> <span class="nav-text">设置类样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置行内样式"><span class="nav-number">1.3.</span> <span class="nav-text">设置行内样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for-列表渲染"><span class="nav-number">1.4.</span> <span class="nav-text">v-for 列表渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for-中的-key-属性"><span class="nav-number">1.5.</span> <span class="nav-text">v-for 中的 key 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-if-和-v-show"><span class="nav-number">1.6.</span> <span class="nav-text">v-if 和 v-show</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李天成</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'IewqjGGWrtQhLdEX5ysm5fKf-gzGzoHsz',
+        appKey: 'f2kiSivj8SPBWDJ0hHFmbNK3',
+        placeholder: '请和谐评论哦~~',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: 
+    });
+  </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
