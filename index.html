@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,7 +80,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '6.6.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -239,6 +239,57 @@
         
         
           
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>Über</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-archives">
 
     
@@ -252,11 +303,65 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
+
+  </li>
 
       
       
     </ul>
   
+
+  
+    
 
   
 
@@ -278,9 +383,6 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-            
-
           
           <div id="content" class="content">
             
@@ -800,6 +902,241 @@ hexo d
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="Code is my life.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/25/vueday01/" class="post-title-link" itemprop="url">vueday01</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-12-25 00:56:13 / Updated at: 00:56:30" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="vue-day01"><a href="#vue-day01" class="headerlink" title="vue day01"></a>vue day01</h2><h3 id="hello-vue"><a href="#hello-vue" class="headerlink" title="hello vue"></a>hello vue</h3><p>vue就是一个js文件而已</p>
+<ol>
+<li><p>新建HTML页面, 引入vue.js文件</p>
+<pre><code>&lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>在页面中准备一个Vue的控制区域</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;    
+</code></pre></li>
+<li><p>创建Vue实例</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#app&apos;,
+  data: {
+    hello: &apos;你好啊vuejs!&apos;
+  }
+})
+</code></pre></li>
+<li><p>在app控制区域中使用vue的指令或者插值表达式将hello数据渲染到页面</p>
+<p> 插值表达式:</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;
+        {{ hello }}
+    &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p> v-text:</p>
+<pre><code>&lt;p v-text=&quot;hello&quot;&gt;&lt;/p&gt;
+</code></pre><p> v-html:</p>
+<pre><code>&lt;p v-html=&quot;hello&quot;&gt;&lt;/p&gt;
+</code></pre><p> 如果hello数据中有HTML标签, v-html会解析HTML标签, 而v-text会直接将其解析成纯文本输出</p>
+</li>
+</ol>
+<h3 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h3><p>在vue中, 一切以 <code>v-</code> 开头的都是指令: directive</p>
+<p>插值表达式, Mustache语法也被称为小胡子语法:</p>
+<pre><code>{{ msg }}
+</code></pre><ol>
+<li><p>v-cloak</p>
+<p> 了解即可, 可以结合css解决插值表达式闪烁的问题, 让标签元素默认隐藏, v-cloak的特点是当数据渲染完成后自动显示</p>
+</li>
+<li><p>v-text</p>
+<p> 将数据以<strong>纯文本</strong>的方式渲染到指定标签内部, 会直接覆盖标签内部的内容</p>
+</li>
+<li><p>v-html</p>
+<p> 同v-text, 区别在于可以渲染<strong>HTML标签</strong></p>
+</li>
+<li><p>v-bind</p>
+<p> 做属性绑定的指令, 在标签中绑定title属性: 如果使用了属性绑定, 属性值就会被解析成JS表达式, 所以msg必须在vm实例的data中定义好, 否则会报错</p>
+<pre><code>&lt;input v-bind:title=&quot;msg&quot; /&gt;
+</code></pre><p> 该指令使用非常频繁, 所以有简写形式 是 冒号  <code>:</code></p>
+<pre><code>&lt;input :title=&quot;msg&quot; /&gt;
+</code></pre><p> 而且v-bind可以绑定原生的dom属性, 也可以绑定自定义属性</p>
+</li>
+<li><p>v-on</p>
+<p> 做事件绑定的指令, 简写形式 是 艾特符号 <code>@</code></p>
+<pre><code>&lt;input @mouseover=&quot;clickHandler&quot; v-on:click=&quot;clickHandler&quot; /&gt;
+</code></pre><p> <code>clickHandler</code>必须在vue实例的 methods 节点中定义</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#app&apos;,
+  methods: {
+    clickHandler() {
+      console.log(&apos;秀!&apos;)
+    }
+  }
+})
+</code></pre><p> 如果需要绑定其他事件, 将click换成其他事件名即可</p>
+</li>
+<li><p>v-model</p>
+<p> <strong>注意: 这是唯一一个实现双向数据绑定的指令, 而且只能用于表单元素, 不需要指定属性, 只能绑定value属性</strong></p>
+<pre><code>&lt;input type=&quot;text&quot; style=&quot;width:100%;&quot; v-model=&quot;msg&quot;&gt;
+</code></pre><p> 如果双向数据绑定, 一定要先在data中定义好msg</p>
+</li>
+</ol>
+<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>事件修饰符在事件绑定时, 加在事件名后面</p>
+<pre><code>&lt;input @click.stop=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
+</code></pre><p>事件修饰符可以串联加多个</p>
+<pre><code>&lt;input @click.stop.prevent=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
+</code></pre><ol>
+<li><p>阻止冒泡</p>
+<p> .stop</p>
+</li>
+<li><p>阻止浏览器默认行为</p>
+<p> .prevent</p>
+</li>
+<li><p>使用捕获, 等同于 <code>addEventListener()</code> 第三个参数传入true的效果</p>
+<p> .capture</p>
+</li>
+<li><p>只有点击当前元素自身才会触发事件, 如果通过冒泡或者捕获传递过来的事件不会触发</p>
+<p> .self</p>
+</li>
+<li><p>只触发一次</p>
+<p> .once</p>
+</li>
+<li><p>在移动端使用scroll事件时建议加上, 可以提高性能</p>
+<p> .passive</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday02/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1045,241 +1382,6 @@ outer()()
 <li>v-show有较高的初始渲染消耗</li>
 </ul>
 <p>总结: 如果需要频繁的切换显示隐藏推荐使用v-show, 如果只需要一次切换, 或者一次都没有, 则使用v-if</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday01/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李天成">
-      <meta itemprop="description" content="Code is my life.">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天成的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/25/vueday01/" class="post-title-link" itemprop="url">vueday01</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-12-25 00:56:13 / Updated at: 00:56:30" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">2018-12-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="vue-day01"><a href="#vue-day01" class="headerlink" title="vue day01"></a>vue day01</h2><h3 id="hello-vue"><a href="#hello-vue" class="headerlink" title="hello vue"></a>hello vue</h3><p>vue就是一个js文件而已</p>
-<ol>
-<li><p>新建HTML页面, 引入vue.js文件</p>
-<pre><code>&lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
-</code></pre></li>
-<li><p>在页面中准备一个Vue的控制区域</p>
-<pre><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;    
-</code></pre></li>
-<li><p>创建Vue实例</p>
-<pre><code>var vm = new Vue({
-  el: &apos;#app&apos;,
-  data: {
-    hello: &apos;你好啊vuejs!&apos;
-  }
-})
-</code></pre></li>
-<li><p>在app控制区域中使用vue的指令或者插值表达式将hello数据渲染到页面</p>
-<p> 插值表达式:</p>
-<pre><code>&lt;div id=&quot;app&quot;&gt;
-    &lt;p&gt;
-        {{ hello }}
-    &lt;/p&gt;
-&lt;/div&gt;
-</code></pre><p> v-text:</p>
-<pre><code>&lt;p v-text=&quot;hello&quot;&gt;&lt;/p&gt;
-</code></pre><p> v-html:</p>
-<pre><code>&lt;p v-html=&quot;hello&quot;&gt;&lt;/p&gt;
-</code></pre><p> 如果hello数据中有HTML标签, v-html会解析HTML标签, 而v-text会直接将其解析成纯文本输出</p>
-</li>
-</ol>
-<h3 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h3><p>在vue中, 一切以 <code>v-</code> 开头的都是指令: directive</p>
-<p>插值表达式, Mustache语法也被称为小胡子语法:</p>
-<pre><code>{{ msg }}
-</code></pre><ol>
-<li><p>v-cloak</p>
-<p> 了解即可, 可以结合css解决插值表达式闪烁的问题, 让标签元素默认隐藏, v-cloak的特点是当数据渲染完成后自动显示</p>
-</li>
-<li><p>v-text</p>
-<p> 将数据以<strong>纯文本</strong>的方式渲染到指定标签内部, 会直接覆盖标签内部的内容</p>
-</li>
-<li><p>v-html</p>
-<p> 同v-text, 区别在于可以渲染<strong>HTML标签</strong></p>
-</li>
-<li><p>v-bind</p>
-<p> 做属性绑定的指令, 在标签中绑定title属性: 如果使用了属性绑定, 属性值就会被解析成JS表达式, 所以msg必须在vm实例的data中定义好, 否则会报错</p>
-<pre><code>&lt;input v-bind:title=&quot;msg&quot; /&gt;
-</code></pre><p> 该指令使用非常频繁, 所以有简写形式 是 冒号  <code>:</code></p>
-<pre><code>&lt;input :title=&quot;msg&quot; /&gt;
-</code></pre><p> 而且v-bind可以绑定原生的dom属性, 也可以绑定自定义属性</p>
-</li>
-<li><p>v-on</p>
-<p> 做事件绑定的指令, 简写形式 是 艾特符号 <code>@</code></p>
-<pre><code>&lt;input @mouseover=&quot;clickHandler&quot; v-on:click=&quot;clickHandler&quot; /&gt;
-</code></pre><p> <code>clickHandler</code>必须在vue实例的 methods 节点中定义</p>
-<pre><code>var vm = new Vue({
-  el: &apos;#app&apos;,
-  methods: {
-    clickHandler() {
-      console.log(&apos;秀!&apos;)
-    }
-  }
-})
-</code></pre><p> 如果需要绑定其他事件, 将click换成其他事件名即可</p>
-</li>
-<li><p>v-model</p>
-<p> <strong>注意: 这是唯一一个实现双向数据绑定的指令, 而且只能用于表单元素, 不需要指定属性, 只能绑定value属性</strong></p>
-<pre><code>&lt;input type=&quot;text&quot; style=&quot;width:100%;&quot; v-model=&quot;msg&quot;&gt;
-</code></pre><p> 如果双向数据绑定, 一定要先在data中定义好msg</p>
-</li>
-</ol>
-<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>事件修饰符在事件绑定时, 加在事件名后面</p>
-<pre><code>&lt;input @click.stop=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
-</code></pre><p>事件修饰符可以串联加多个</p>
-<pre><code>&lt;input @click.stop.prevent=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
-</code></pre><ol>
-<li><p>阻止冒泡</p>
-<p> .stop</p>
-</li>
-<li><p>阻止浏览器默认行为</p>
-<p> .prevent</p>
-</li>
-<li><p>使用捕获, 等同于 <code>addEventListener()</code> 第三个参数传入true的效果</p>
-<p> .capture</p>
-</li>
-<li><p>只有点击当前元素自身才会触发事件, 如果通过冒泡或者捕获传递过来的事件不会触发</p>
-<p> .self</p>
-</li>
-<li><p>只触发一次</p>
-<p> .once</p>
-</li>
-<li><p>在移动端使用scroll事件时建议加上, 可以提高性能</p>
-<p> .passive</p>
-</li>
-</ol>
 
           
         
@@ -1922,7 +2024,7 @@ Vue.config.keyCodes.f2 = 113
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.6.0</div>
 
 
 
@@ -2014,13 +2116,6 @@ Vue.config.keyCodes.f2 = 113
 
   
   
-
-
-  <script src="/js/src/affix.js?v=6.6.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
-
-
 
   
 
