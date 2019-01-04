@@ -243,6 +243,1103 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/29/vueday08/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/29/vueday08/" itemprop="url">vueday08</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-29T17:13:13+08:00">
+                2018-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/29/vueday08/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/29/vueday08/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="vue-day08"><a href="#vue-day08" class="headerlink" title="vue day08"></a>vue day08</h2><h3 id="babel的使用"><a href="#babel的使用" class="headerlink" title="babel的使用"></a>babel的使用</h3><ol>
+<li><p>装核心包和loader的包</p>
+<p> <strong>注意事项</strong>: 由于<code>babel-loader</code>和<code>babel-core</code>已经更新, <code>babel-core</code>换了个包名, 最新版的包名是<code>@babel/core</code>, 最新版本的<code>babel-core</code>必须结合最新版本的<code>babel-loader</code>使用, 也就是<code>babel-core7</code>结合<code>babel-loader8</code>使用, 而<code>npm i babel-loader babel-core -D</code> 这个指令安装的是<code>babel-loader8</code> 和 <code>babel-core6</code>, 所以会导致<code>babel</code>无法使用, 需要手动将<code>babel-loader</code>的版本降为 7</p>
+<p> 总结:</p>
+<pre><code>npm i babel-loader@7 babel-core -D
+</code></pre></li>
+<li><p>装语法的包</p>
+<p> 由于babel默认只能将一部分ES6语法转为ES5, 所以还需要根据自身的需求选择语法预设 (preset)</p>
+<p> 必须要装的是<code>env</code>, <code>stage-X</code>可以选装, 但是如果需要用更高级的ES6语法, 建议都装</p>
+<p> 不推荐使用最新版本的插件而放弃stage, 这样你会多很多工作</p>
+<pre><code>npm i babel-preset-env babel-preset-stage-0 -D
+</code></pre></li>
+<li><p>在<code>webpack.config.js</code>中配置好loader</p>
+<pre><code>module: {
+    rules: [
+      { test: /\.css$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;] },
+      // less-loader
+      { test: /\.less$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;less-loader&apos;] },
+      { test: /\.(scss|sass)$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;] },
+      {
+        test: /\.(png|jpg|gif|jpeg|bmp|webp)$/,
+        use: [&apos;url-loader?limit=8192&amp;name=[hash:8]-[name].[ext]&apos;]
+        // use: [
+        //   {
+        //     loader: &apos;url-loader&apos;,
+        //     options: {
+        //       limit: 8192 // 限制 单位为byte  8192字节是8KB
+        //     }
+        //   }
+        // ]
+      },
+      { test: /\.(eot|svg|ttf|woff|woff2)$/, use: [&apos;url-loader&apos;] },
+      { test: /\.js$/, exclude: /node_modules/, loader: &apos;babel-loader&apos; }
+    ]
+  },
+</code></pre></li>
+<li><p>在项目根目录新建一个<code>.babelrc</code>配置文件, 并在其中配置好语法预设</p>
+<pre><code>{
+  &quot;presets&quot;: [&quot;env&quot;, &quot;stage-0&quot;]
+}
+</code></pre></li>
+</ol>
+<h3 id="render函数的使用"><a href="#render函数的使用" class="headerlink" title="render函数的使用"></a>render函数的使用</h3><p>创建VM实例时, 指定el属性来设置VM实例的托管区域, 以后可以将注册的组件在托管区域内以标签形式来使用</p>
+<p>如果使用render函数, 则是将指定的某个组件, 直接替换掉托管区域(app)</p>
+<p>传统的component方式:</p>
+<pre><code>var login = {
+  template: &apos;&lt;h1&gt;这是登录组件&lt;/h1&gt;&apos;
+}
+
+// 创建 Vue 实例，得到 ViewModel
+var vm = new Vue({
+  el: &apos;#app&apos;,
+  data: {},
+  methods: {},
+  components: {
+    login
+  }
+});
+</code></pre><p>使用render函数渲染组件:</p>
+<pre><code>var login = {
+    template: &apos;&lt;h1&gt;这是登录组件&lt;/h1&gt;&apos;
+}
+
+var vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {},
+    methods: {},
+    render: function(createElement) {
+        return createElement(login)
+    }
+})
+</code></pre><p>简写:</p>
+<pre><code>var login = {
+    template: &apos;&lt;h1&gt;这是登录组件&lt;/h1&gt;&apos;
+}
+
+var vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {},
+    methods: {},
+    render: c =&gt; c(login)
+})
+</code></pre><h3 id="使用webpack引入vue"><a href="#使用webpack引入vue" class="headerlink" title="使用webpack引入vue"></a>使用webpack引入vue</h3><ol>
+<li><p>安装</p>
+<pre><code>npm i vue -S
+</code></pre></li>
+<li><p>正在main.js中引入vue</p>
+<p> 注意: 如果在main.js中直接引入安装好的vue, 那么默认会引入<code>vue.runtime.common.js</code>而非完整版的vue.js文件</p>
+<p> vue包的package.json中配置的main节点如下:</p>
+<pre><code>&quot;main&quot;: &quot;dist/vue.runtime.common.js&quot;,
+</code></pre></li>
+<li><p>在引入vue之前, 先给vue引入起个别名, 指向完整版的vue.js文件</p>
+<p> 在webpack.config.js的配置对象中, 新增一个<code>resolve</code>节点, 添加<code>alias</code>属性</p>
+<pre><code>resolve: {
+    alias: {
+      &apos;vue$&apos;: &apos;vue/dist/vue.js&apos;
+    }
+},
+</code></pre></li>
+<li><p>在main.js中直接引入vue</p>
+<pre><code>import Vue from &apos;vue&apos;
+</code></pre></li>
+</ol>
+<h3 id="模块化vue组件"><a href="#模块化vue组件" class="headerlink" title="模块化vue组件"></a>模块化vue组件</h3><ol>
+<li><p>装包</p>
+<pre><code>npm i vue-loader vue-template-compiler -D
+</code></pre></li>
+<li><p>在webpack配置文件中添加匹配规则</p>
+<pre><code>{ test: /\.vue$/, use: &apos;vue-loader&apos;}
+</code></pre></li>
+<li><p>在webpack添加VueLoaderPlugin插件</p>
+<p> <strong>注意: 这一个插件是必须的!</strong></p>
+<pre><code>const VueLoaderPlugin = require(&apos;vue-loader/lib/plugin&apos;)
+...
+plugins: [ // 插件配置项
+    new webpack.HotModuleReplacementPlugin(), // 3. 添加热更新插件
+    new HtmlWebpackPlugin({ // 用于帮助我们自动生成HTML文件的
+      template: &apos;./src/index.html&apos;, // 如果不指定template, 默认生成一个空的HTML5页面, 指定template表示从哪个HTML文件编译一个新的HTML出来
+      filename: &apos;index.html&apos; // 便于开发人员自己查看
+    }),
+    new VueLoaderPlugin()
+],
+</code></pre></li>
+<li><p>新建vue文件</p>
+<p> 注意: vue文件内部有三个节点, 分别是 <code>&lt;template&gt;&lt;/template&gt;</code> 和 <code>&lt;script&gt;&lt;/script&gt;</code> 还有 <code>&lt;style&gt;&lt;/style&gt;</code></p>
+<p> 分别表示HTML模板, js代码, 样式, template节点下只能有一个根元素</p>
+<p> login.vue:</p>
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;这是通过vue文件写的登录组件!!!&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+h1 {
+  color: pink;
+}
+&lt;/style&gt;
+</code></pre></li>
+<li><p>在main.js中导入login.vue文件, 以变量接收对象</p>
+<pre><code>import login from &apos;./src/login.vue&apos;
+</code></pre></li>
+<li><p>使用render函数渲染login组件</p>
+<pre><code>let vm = new Vue({
+  el:&apos;#app&apos;,
+  data: {
+    msg: &apos;xxx&apos;
+  },
+  render: c =&gt; c(login)
+})
+</code></pre><p> <strong>注意</strong>: 使用render函数渲染组件, 可以使用<code>vue.runtime.common.js</code>的vue包, 不会报错</p>
+<p> 不过render函数的特点是将app盒子直接替换成login组件</p>
+</li>
+</ol>
+<h3 id="ES6的export和export-default"><a href="#ES6的export和export-default" class="headerlink" title="ES6的export和export default"></a>ES6的export和export default</h3><p>在同一个目录中有两个js文件: <code>m1.js</code> 和 <code>m2.js</code></p>
+<p>在ES6中, 导入和导出的语法一共就4种方式:</p>
+<pre><code>import *** from *** 例如: import $ from &apos;jquery&apos;
+import *** 例如: import &apos;./css/1.css&apos;
+export
+export default
+</code></pre><p>由于开发中会用到模块化, 所以在一个js文件中定义的成员, 需要向外暴露, 就可以使用export或export default</p>
+<ol>
+<li><p>export default 介绍</p>
+<p> 一个js文件, 只能通过 <code>export default</code> 向外暴露一次</p>
+<p> 通过 <code>export default</code> 暴露的对象, 可以在 <code>import</code> 的时候手动指定变量名接收, 不需要考虑导出时的变量, 相当于直接把整个数据导出了</p>
+<p> 案例: 在<code>m1.js</code>中导出一个对象, 在<code>m2.js</code>中接收</p>
+<p> <code>m1.js</code></p>
+<pre><code>export default {
+    name: &apos;张三&apos;,
+    age: 18
+} 
+</code></pre><p> <code>m2.js</code></p>
+<pre><code>import person from &apos;./m1.js&apos;
+</code></pre></li>
+<li><p>export 介绍</p>
+<p> 一般将export称为按需导出</p>
+<p> 在一个js文件中, 可以通过<code>export</code>向外暴露多个成员</p>
+<p> 通过 <code>export</code> 暴露的成员, 必须定义名称, 而且其他地方导入的时候, 必须按照导出时定义名称来选择导入</p>
+<p> 导入时可以通过 <code>as</code> 起别名</p>
+<p> 案例: 在<code>m1.js</code>中导出多个数据, 在<code>m2.js</code>中接收</p>
+<p> <code>m1.js</code></p>
+<pre><code>export let name = &apos;李四&apos;
+export let age = 18
+export let gender = &apos;男&apos;
+export let obj = { name: &apos;对象的名字&apos; }
+</code></pre><p> <code>m2.js</code></p>
+<pre><code>import { name, age, obj as o } from &apos;./m1.js&apos;
+</code></pre></li>
+</ol>
+<h3 id="在webpack中使用vue-router"><a href="#在webpack中使用vue-router" class="headerlink" title="在webpack中使用vue-router"></a>在webpack中使用vue-router</h3><ol>
+<li><p>装包</p>
+<pre><code>npm i vue-router -S
+</code></pre></li>
+<li><p>导入vue-router包并安装到vue身上</p>
+<pre><code>import Vue from &apos;vue&apos;
+import VueRouter from &apos;vue-router&apos;
+// 手动安装到vue身上
+Vue.use(VueRouter)
+</code></pre></li>
+<li><p>创建路由对象</p>
+<pre><code>import account from &apos;./componets/account.vue&apos;
+
+let router = new VueRouter({
+    routes: [
+        { path: &apos;/account&apos;, component: account }
+    ]
+})
+</code></pre></li>
+<li><p>将路由对象挂载到vm实例</p>
+<pre><code>let vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {},
+    router
+})
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/28/vueday07/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/28/vueday07/" itemprop="url">vueday07</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T17:13:13+08:00">
+                2018-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/28/vueday07/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/28/vueday07/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="vue-day07"><a href="#vue-day07" class="headerlink" title="vue day07"></a>vue day07</h2><h3 id="webpack基本使用的复习"><a href="#webpack基本使用的复习" class="headerlink" title="webpack基本使用的复习"></a>webpack基本使用的复习</h3><ol>
+<li><p>在项目中安装webpack包</p>
+<pre><code>npm install -D webpack
+npm install -D webpack-cli
+</code></pre><p> 注意事项: 如果安装的是4以上的版本, 还需要装<code>cli</code>的包</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>在全局安装webpack包</p>
+<pre><code>npm install webpack -g
+npm install webpack-cli -g
+</code></pre></li>
+<li><p>使用全局的webpack指令, 编译输出文件</p>
+<p> 与webpack3不同, webpack4使用指令时, 必须加上 <code>-o</code> 的参数才可以正确的输出到./dist目录下</p>
+<pre><code>webpack main.js -o ./dist/main.js
+</code></pre></li>
+</ol>
+<h3 id="webpack的配置文件"><a href="#webpack的配置文件" class="headerlink" title="webpack的配置文件"></a>webpack的配置文件</h3><p>如果每次执行webpack指令时都需要指定入口和出口, 就太麻烦了, 官方文档也提供了一种配置文件的方式, 只需要在项目的根目录下新建一个名为: <code>webpack.config.js</code> 文件, 并且遵循CommonJS规范对外暴露一个配置对象, 按照官方文档进行配置, 即可每次只需要输入webpack自动查找配置文件进行编译打包:</p>
+<p>webpack.config.js文件配置如下:</p>
+<pre><code>// 完全遵循了CommonJS规范  这里可以直接写node平台的代码
+const path = require(&apos;path&apos;)
+
+module.exports = {
+  entry: &apos;./main.js&apos;, // 指定入口, 相对路径和绝对路径均可
+  output: {
+    path: path.join(__dirname, &apos;./dist&apos;), // 指定出口目录, 必须是绝对路径, 相对路径会报错!!!
+    filename: &apos;bundle.js&apos; // 指定出口文件名
+  }, // 指定出口, 如果不设置, 默认是 ./dist 目录, 输出入口文件同名的文件
+  mode: &apos;development&apos; // 开发  developer 开发者  Programmer 程序员
+}
+</code></pre><h3 id="webpack-dev-server的使用"><a href="#webpack-dev-server的使用" class="headerlink" title="webpack-dev-server的使用"></a>webpack-dev-server的使用</h3><p>每次修改代码都需要手动运行<code>webpack</code>指令, 不符合开发人员的需求</p>
+<p>所以可以结合<code>webpack-dev-server</code>工具, 完成自动化编译打包</p>
+<ol>
+<li><p>安装<code>webpack-dev-server</code></p>
+<p> 必须先安装<code>webpack</code>和<code>webpack-cli</code>在项目开发依赖!</p>
+<pre><code>npm i webpack webpack-cli -D
+</code></pre><p> 再安装<code>webpack-dev-server</code>到项目开发依赖</p>
+<pre><code>npm i webpack-dev-server -D
+</code></pre></li>
+<li><p>在<code>package.json</code>的<code>scripts</code>节点中配置一个运行脚本</p>
+<p> 因为webpack-dev-server是安装在项目开发依赖, 无法全局直接运行, 所以必须在<code>package.json</code>中配置运行脚本</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server&quot;
+ },
+</code></pre></li>
+<li><p>配置完脚本后, 通过<code>npm run dev</code>可以运行脚本</p>
+<pre><code>npm run dev
+</code></pre></li>
+</ol>
+<h4 id="webpack-dev-server的特点"><a href="#webpack-dev-server的特点" class="headerlink" title="webpack-dev-server的特点"></a>webpack-dev-server的特点</h4><ol>
+<li><p>运行<code>npm run dev</code>后, 会启动一个web服务器, 将项目根目录托管到web服务器中</p>
+</li>
+<li><p>每当修改了项目中的main.js文件后就会自动编译</p>
+</li>
+<li><p>编译输出的文件被托管在项目根目录下, 是一个虚拟文件, 通过<code>http://localhost:8080/bundle.js</code>可以直接访问, 但是不会存储在物理磁盘上, 而是放在内存中</p>
+<p> 因为放在物理磁盘上影响效率, 而且对磁盘的寿命也有影响</p>
+</li>
+</ol>
+<p>了解了webpack-dev-server的特点后, 在<code>index.html</code>中, 就不能再引入 <code>../dist/bundle.js</code> 而是应该引入, web服务器根目录的<code>bundle.js</code></p>
+<pre><code>&lt;script src=&quot;/bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>享受它带来的快感吧!</p>
+<p>每次修改了main.js后会自动编译输出到根目录的内存中的bundle.js文件, 同时还支持自动刷新浏览器</p>
+<p>注意: webpack-dev-server, 主要作用就是在开发阶段方便程序员频繁修改代码, 自动看效果, 如果项目最终上线, 还是需要使用webpack进行打包编译输出到物理磁盘的dist目录</p>
+<h4 id="webpack-dev-server的常用参数"><a href="#webpack-dev-server的常用参数" class="headerlink" title="webpack-dev-server的常用参数"></a>webpack-dev-server的常用参数</h4><pre><code>--open // 自动打开浏览器
+--port // 自定义端口号
+--contentBase // 指定托管的根目录
+--hot // 热模块替换 HMR Hot Module Replacement
+</code></pre><p>在<code>package.json</code>的<code>scripts</code>节点下设置:</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server --open --port 3000 --contentBase ./src --hot&quot;
+ },
+</code></pre><h4 id="webpack-dev-server参数写入配置-第二种设置参数的方式"><a href="#webpack-dev-server参数写入配置-第二种设置参数的方式" class="headerlink" title="webpack-dev-server参数写入配置(第二种设置参数的方式)"></a>webpack-dev-server参数写入配置(第二种设置参数的方式)</h4><p>可以不再命令后面使用参数, <code>package.json</code>中直接调用<code>webpack-dev-server</code></p>
+<p>在<code>package.json</code>的<code>scripts</code>节点下设置:</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server&quot;,
+    &quot;dev2&quot;: &quot;webpack-dev-server --open --port 3000 --contentBase ./src --hot&quot;
+},
+</code></pre><p>参数在<code>webpack.config.js</code>文件中的<code>devServer</code>节点中设置:</p>
+<pre><code>devServer: {
+    contentBase: path.join(__dirname, &apos;src&apos;), // 托管根路径
+    compress: true, // 启用压缩
+    port: 3000, // 端口号
+    open: true, // 自动打开浏览器
+    hot: true // 2. 开启热更新  如果设置hot为true 需要手动添加HMR插件, 详见第三步
+},
+</code></pre><p><strong>注意</strong>: 必须有 <code>webpack.HotModuleReplacementPlugin</code> 才能完全启用 HMR, 如果 <code>webpack</code> 或 <code>webpack-dev-server</code> 是通过 <code>--hot</code> 选项启动的，那么这个插件会被自动添加, 反之需要手动添加HMR插件, 在<code>plugins</code>节点下创建HMR对象即可</p>
+<pre><code>// 1. 导入webpack
+const webpack = require(&apos;webpack&apos;)
+
+module.exports = {
+    // ...
+    plugins: [ // 插件配置项
+        new webpack.HotModuleReplacementPlugin(), // 3. 添加热更新插件
+    ],
+}
+</code></pre><h3 id="HtmlWebpackPlugin的使用"><a href="#HtmlWebpackPlugin的使用" class="headerlink" title="HtmlWebpackPlugin的使用"></a>HtmlWebpackPlugin的使用</h3><p>因为每次使用物理磁盘的<code>index.html</code>, 还需要考虑<code>bundle.js</code>的位置, <code>DevServer</code>生成的<code>bundle.js</code>在 <code>/</code> 目录, 而<code>webpack</code>打包输出的却在<code>dist</code>目录, 所以容易产生一些困扰, 开发阶段引用根目录, 上线后又要手动换成<code>dist</code>目录, 不太方便</p>
+<p><code>HtmlWebpackPlugin</code>帮助我们解决了<code>bundle.js</code>的路径问题</p>
+<ol>
+<li><p>将<code>index.html</code>托管到内存中的根目录下, 和<code>bundle.js</code>同级</p>
+</li>
+<li><p>自动添加了<code>bundle.js</code>的引用</p>
+</li>
+</ol>
+<p>使用方法:</p>
+<ol>
+<li><p>安装插件</p>
+<pre><code>npm install --save-dev html-webpack-plugin
+</code></pre></li>
+<li><p>在<code>webpack.config.js</code>中引入</p>
+<pre><code>// 导入HtmlWebpackPlugin
+const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;)
+</code></pre></li>
+<li><p>在<code>plugins</code>节点下添加插件</p>
+<pre><code>plugins: [ // 插件配置项
+    new webpack.HotModuleReplacementPlugin(), // 3. 添加热更新插件
+    new HtmlWebpackPlugin({ // 用于帮助我们自动生成HTML文件的
+      template: &apos;./src/index.html&apos;, // 如果不指定template, 默认生成一个空的HTML5页面, 指定template表示从哪个HTML文件编译一个新的HTML出来
+      filename: &apos;index.html&apos; // 默认值就是index.html, 便于开发人员自己查看
+    })
+],
+</code></pre></li>
+</ol>
+<h3 id="loader的使用"><a href="#loader的使用" class="headerlink" title="loader的使用"></a>loader的使用</h3><ul>
+<li><p>webpack默认情况下只支持js文件的打包编译, 除此以外所有的文件都无法解析处理</p>
+</li>
+<li><p>这样设计的目的是为了让webpack更轻量级, 可定制性更高, 根据开发者的需要而选择合适的loader来解析对应的文件</p>
+</li>
+<li><p>所以提出了loader的概念, 主要的目的是为了处理一些其他文件的打包编译</p>
+</li>
+</ul>
+<p>在webpack中, 最基础的css文件也无法处理, 而且使用了webpack之后, css也不会像以前那样在HTML中引入, 而是放在<code>main.js</code>中使用es6的<code>import</code>语法引入:</p>
+<pre><code>import &apos;./src/css/index.css&apos;
+</code></pre><h4 id="css-loader和style-loader的使用"><a href="#css-loader和style-loader的使用" class="headerlink" title="css-loader和style-loader的使用"></a>css-loader和style-loader的使用</h4><p>由于项目中并未安装<code>css-loader</code> 所以无法解析css后缀的文件</p>
+<ol>
+<li><p>安装css-loader和style-loader</p>
+<pre><code>npm i style-loader css-loader -D
+</code></pre></li>
+<li><p>配置loader</p>
+<p> rules节点表示loader的匹配规则, 根据不同的正则来匹配不同的文件类型, 从而选择合适的loader来解析文件</p>
+<pre><code>module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [ &apos;style-loader&apos;, &apos;css-loader&apos; ]
+      }
+    ]
+  }
+}
+</code></pre><p> <strong>注意: loader是有加载顺序的, 顺序是从右到左</strong></p>
+<p> 为什么会有style-loader和css-loader呢?</p>
+<p> css-loader用于解析css文件, 将其解析为样式, 交给style-loader应用到页面中</p>
+</li>
+</ol>
+<h4 id="less-loader的使用"><a href="#less-loader的使用" class="headerlink" title="less-loader的使用"></a>less-loader的使用</h4><p>根据上面的经验来学习less-loader</p>
+<ol>
+<li><p>装包, 注意: 需要装less-loader和less两个包</p>
+<pre><code>npm i less-loader less -D
+</code></pre></li>
+<li><p>配置</p>
+<pre><code>module: {
+    rules: [
+      { test: /\.css$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;] },
+      // less-loader
+      { test: /\.less$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;less-loader&apos;] }
+    ]
+},
+</code></pre></li>
+</ol>
+<h4 id="sass-loader的使用"><a href="#sass-loader的使用" class="headerlink" title="sass-loader的使用"></a>sass-loader的使用</h4><p>根据上面的经验来学习sass-loader</p>
+<ol>
+<li><p>装包, 注意需要安装sass-loader和node-sass两个包</p>
+<pre><code>npm i sass-loader node-sass webpack -D
+</code></pre></li>
+<li><p>配置</p>
+<pre><code>module: {
+    rules: [
+      { test: /\.css$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;] },
+      // less-loader
+      { test: /\.less$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;less-loader&apos;] },
+      { test: /\.(scss|sass)$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;] },
+    ]
+},
+</code></pre></li>
+</ol>
+<h4 id="url-loader的使用"><a href="#url-loader的使用" class="headerlink" title="url-loader的使用"></a>url-loader的使用</h4><p>根据上面的经验来学习url-loader</p>
+<p>作用: 由于webpack无法加载图片, 在css中如果使用了<code>background-image</code>, webpack就会报错, 同理如果使用了字体文件也无法加载</p>
+<p>此时都需要使用<code>file-loader</code>或者<code>url-loader</code></p>
+<p>两者的区别在于: <code>url-loader</code> 更高级一些, 可以添加一些配置, 实现在指定大小以内的图片进行base64的转码, 减少浏览器的二次请求</p>
+<ol>
+<li><p>装包</p>
+<pre><code>npm i -D url-loader file-loader
+</code></pre></li>
+<li><p>配置</p>
+<pre><code>{
+    test: /\.(png|jpg|gif|jpeg|bmp|webp)$/,
+    use: [&apos;url-loader?limit=8192&amp;name=[hash:8]-[name].[ext]&apos;]
+    // use: [
+    //   {
+    //     loader: &apos;url-loader&apos;,
+    //     options: {
+    //       limit: 8192 // 限制 单位为byte  8192字节是8KB
+    //     }
+    //   }
+    // ]
+  },
+  { test: /\.(eot|svg|ttf|woff|woff2)$/, use: [&apos;url-loader&apos;] }
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/26/vueday06/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李天成">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天成的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/26/vueday06/" itemprop="url">vueday06</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-26T17:13:13+08:00">
+                2018-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/26/vueday06/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/26/vueday06/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="vue-day06"><a href="#vue-day06" class="headerlink" title="vue day06"></a>vue day06</h2><h3 id="路由的基本使用"><a href="#路由的基本使用" class="headerlink" title="路由的基本使用"></a>路由的基本使用</h3><ol>
+<li><p>导入vue-router的js文件</p>
+<pre><code>&lt;script src=&quot;./lib/vue-router-3.0.1.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>创建组件的模板对象</p>
+<pre><code>// 组件的模板对象
+var login = {
+  template: &apos;&lt;h1&gt;登录组件&lt;/h1&gt;&apos;
+}
+
+var register = {
+  template: &apos;&lt;h1&gt;注册组件&lt;/h1&gt;&apos;
+}
+</code></pre></li>
+<li><p>创建路由对象, 配置路由的匹配规则</p>
+<pre><code>let router = new VueRouter({
+    // 匹配规则
+    routes: [
+        { path: &apos;/login&apos;, component: login },
+        { path: &apos;/register&apos;, component: register }
+    ]
+})
+</code></pre></li>
+<li><p>将router挂载到vm实例身上</p>
+<pre><code>let vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {},
+    methods: {},
+    router
+})
+</code></pre></li>
+<li><p>提前准备好一个”坑”, 占位组件 <code>router-view</code></p>
+<p> <code>router-view</code>在哪里, 路由匹配成功后组件就会放到哪里</p>
+<pre><code>&lt;router-view&gt;&lt;/router-view&gt;
+</code></pre></li>
+</ol>
+<p>注意: 当vue-router包引入后, 会自动开启hash路由模式, 也就是在地址栏最后会自动加上 <code>#/</code></p>
+<p>路由切换的原理: 地址栏的hash <code>#/</code> 的值发生变化时, 路由会进行匹配, 将匹配的组件替换到 <code>&lt;router-view&gt;</code> 的区域中</p>
+<p>结合a标签可以实现, 点击切换路由, 例如:</p>
+<pre><code>&lt;a href=&quot;#/login&quot;&gt;登录&lt;/a&gt;
+&lt;a href=&quot;#/register&quot;&gt;注册&lt;/a&gt;
+</code></pre><h3 id="router-link的使用"><a href="#router-link的使用" class="headerlink" title="router-link的使用"></a>router-link的使用</h3><p>上面使用a标签的方式, 每次都需要在 <code>/</code> 前面加一个 <code>#</code> 不符合优雅的程序员编程习惯</p>
+<p>Vue-Router也提供了一个组件来帮助我们渲染a标签: <code>router-link</code></p>
+<pre><code>&lt;router-link to=&quot;/login&quot;&gt;登录&lt;/router-link&gt;
+&lt;router-link to=&quot;/register&quot;&gt;注册&lt;/router-link&gt;
+</code></pre><p>如果你不希望router-link渲染成一个a标签, 还可以通过tag属性指定你希望渲染的标签元素</p>
+<pre><code>&lt;router-link tag=&quot;span&quot; to=&quot;/login&quot;&gt;登录&lt;/router-link&gt;
+</code></pre><p><strong>注意: 即使被渲染成了span, 点击还是会切换路由, 因为不管渲染成什么元素, Vue-Router都会为其绑定点击事件</strong></p>
+<h3 id="redirect的作用"><a href="#redirect的作用" class="headerlink" title="redirect的作用"></a>redirect的作用</h3><p>用于设置页面加载时默认显示的组件</p>
+<p>在路由匹配规则的配置中使用path+redirect属性来设置重定向的组件:</p>
+<pre><code>...
+routes: [
+    { path: &apos;/&apos;, redirect: &apos;/login&apos; },
+    { path: &apos;/login&apos;, component: login },
+]
+...
+</code></pre><h3 id="当前选中的路由链接高亮"><a href="#当前选中的路由链接高亮" class="headerlink" title="当前选中的路由链接高亮"></a>当前选中的路由链接高亮</h3><p><code>router-link</code> 默认会有切换时的类样式, 当前显示的路由, 默认加上的类名为: <code>router-link-active</code></p>
+<p>我们可以自己添加css类样式完成当前路由高亮的效果</p>
+<p>除此之外, 还可以将默认值修改为自定义的类名:</p>
+<p>在路由的构造选项中, 通过 <code>linkActiveClass</code> 设置自定义类名</p>
+<pre><code>let router = new VueRouter({
+  // 本地打开只能使用 hash , 不能使用history, 如果需要使用history模式, 必须后台服务器给予支持
+  // mode: &apos;history&apos;,
+  // route // 这个配置对象中的 route 表示 【路由匹配规则】 的意思
+  routes: [ // 路由匹配规则 
+    // 每个路由规则，都是一个对象，这个规则对象，身上，有两个必须的属性：
+    //  属性1 是 path， 表示监听 哪个路由链接地址；
+    //  属性2 是 component， 表示，如果 路由是前面匹配到的 path ，则展示 component 属性对应的那个组件
+    // 注意： component 的属性值，必须是一个 组件的模板对象， 不能是 组件的引用名称；
+    // { path: &apos;/&apos;, component: login },
+    { path: &apos;/&apos;, redirect: &apos;/login&apos; }, // 这里的 redirect 和 Node 中的 redirect 完全是两码事
+    { path: &apos;/login&apos;, component: login },
+    { path: &apos;/register&apos;, component: register }
+  ],
+  linkActiveClass: &apos;myactive&apos;
+})
+</code></pre><h3 id="路由传参-query"><a href="#路由传参-query" class="headerlink" title="路由传参-query"></a>路由传参-query</h3><p>与后端路由传参方式一样, 在链接最后加上 ? 传参</p>
+<pre><code>&lt;router-link to=&quot;/login?name=zs&amp;age=18&quot;&gt;&lt;/router-link&gt;
+</code></pre><p>query传参的特点是, 路由匹配规则和 <code>/login</code> 一样, 不需要做额外的修改</p>
+<pre><code>var router = new VueRouter({
+  routes: [
+    { path: &apos;/login&apos;, component: login },
+    { path: &apos;/register&apos;, component: register }
+  ]
+})
+</code></pre><p>在login组件内部, 根据 <code>组件实例.$route.query</code> 获取query对象</p>
+<pre><code>this.$route.query.name
+</code></pre><p>如果需要把参数渲染到页面, 由于以前使用data中的数据渲染到页面, 可以省略this, 这里同理, 如果需要使用插值表达式进行渲染:</p>
+<pre><code>{{ $route.query.name }}
+</code></pre><h3 id="路由传参-params"><a href="#路由传参-params" class="headerlink" title="路由传参-params"></a>路由传参-params</h3><p>这种方式需要在路由匹配中定义好才可以使用 <code>:id</code></p>
+<pre><code>var router = new VueRouter({
+  routes: [
+    { path: &apos;/login/:id/:name&apos;, component: login },
+    { path: &apos;/register&apos;, component: register }
+  ]
+})
+</code></pre><p>定义好了路由规则之后, 可以直接在URL中进行传参了:</p>
+<p>注意: 必须完整匹配</p>
+<pre><code>&lt;router-link to=&quot;/login/1/ls&quot;&gt;&lt;/router-link&gt;
+</code></pre><p>在login组件实例中可以使用 <code>$route.params.id</code> 获取参数</p>
+<pre><code>this.$route.params.id
+this.$route.params.name
+</code></pre><p>如果需要渲染到页面也可以通过插值表达式进行渲染</p>
+<h3 id="路由嵌套-子路由"><a href="#路由嵌套-子路由" class="headerlink" title="路由嵌套(子路由)"></a>路由嵌套(子路由)</h3><p>先在路由匹配规则中, 通过<code>children</code>属性来确定路由之间的关系:</p>
+<pre><code>var router = new VueRouter({
+  routes: [
+    {
+      path: &apos;/account&apos;,
+      component: account,
+      // 使用 children 属性，实现子路由，同时，子路由的 path 前面，不要带 / ，否则永远以根路径开始请求，这样不方便我们用户去理解URL地址
+      children: [
+        { path: &apos;login&apos;, component: login },
+        { path: &apos;register&apos;, component: register }
+      ]
+    }
+    // { path: &apos;/account/login&apos;, component: login },
+    // { path: &apos;/account/register&apos;, component: register }
+  ]
+})
+</code></pre><p>注意: 如果在写子路由的匹配规则, 需要注意, path前面不能加 <code>/</code> 如果加 <code>/</code>表示直接匹配 <code>/login</code>, 而我们期望的是匹配 <code>/account/login</code>, 所以不能在子路由的规则前面加上 <code>/</code> 必须是相对路径, 如果期望就是 <code>/login</code>, 那么就可以在前面加上 <code>/</code></p>
+<p>匹配规则书写完后, 还需要在account组件中, 放置一个 <code>&lt;router-view&gt;&lt;/router-view&gt;</code> 组件, 用于切换子路由的登录注册组件</p>
+<h3 id="watch的使用"><a href="#watch的使用" class="headerlink" title="watch的使用"></a>watch的使用</h3><p>用于监视数据的变化</p>
+<p>在data中先定义好数据并使用</p>
+<p>与data同级的位置有一个watch属性, 也是一个对象, 在其中可以定义一些与data中要监视的数据同名的函数, 用于监听data中数据的变化:</p>
+<pre><code>let vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {
+        msg: &apos;嘻嘻嘻&apos;
+    },
+    methods: {},
+    watch: {
+        // 此处的函数名必须和data中要监视的数据一致
+        msg(newVal, oldVal) {
+            // 当msg发生变化的时候会执行该函数, 在此处可以处理一些操作
+        }
+    }
+})
+</code></pre><p>除了可以监视data中已有数据, watch还可以监视vm实例身上的属性, 例如最常用的就是监视路由的变化: <code>$route</code> 对象的变化</p>
+<pre><code>watch: {
+    $route(to, from) {
+        // to 表示路由改变后的值
+        // from 表示路由改变前的值
+    }
+}
+</code></pre><h3 id="computed属性的使用"><a href="#computed属性的使用" class="headerlink" title="computed属性的使用"></a>computed属性的使用</h3><ol>
+<li><p>计算属性就是定义在 <code>computed</code> 中的函数, 虽然是一个函数, 使用时和<code>data</code>中的属性一模一样, 就当成一个普通的数据使用即可</p>
+</li>
+<li><p>在计算属性内部用到的<strong>所有数据</strong>, 只要发生了变化, 计算属性会自动同步</p>
+</li>
+<li><p>同步的结果还会缓存, 如果多个地方引用了计算属性, 不会重复计算, 每次更新只会计算一次</p>
+</li>
+<li><p>由于计算属性使用和<code>data</code>中的属性一模一样, 也是挂载到vm实例身上的一个数据, 所以<strong>不能和<code>data</code>中的属性产生冲突, 重复声明!!!</strong></p>
+</li>
+<li><p>计算属性无法通过外界修改, 只有当内部引用的数据发生变化时才会自动更新</p>
+</li>
+</ol>
+<p>案例:</p>
+<pre><code>data: {
+    msg: &apos;谢俊今天没洗头,&apos;
+},
+computed: {
+    fullMessage() {
+        return this.msg + &apos;今天天气真好啊!&apos;
+    }
+}
+</code></pre><p>当msg发生变化时, fullMessage会自动更新</p>
+<h3 id="nrm的使用"><a href="#nrm的使用" class="headerlink" title="nrm的使用"></a>nrm的使用</h3><p>由于npm默认的服务器站点访问速度较慢, 所以之前我们使用<code>cnpm</code>进行包的安装</p>
+<p>但是有时候<code>cnpm</code>装包会出现问题, 或者无法安装</p>
+<p>还有另一个渠道, 使用<code>nrm</code>修改npm下载源地址</p>
+<ol>
+<li><p>安装nrm</p>
+<pre><code>npm i -g nrm
+
+或
+
+cnpm i -g nrm
+</code></pre></li>
+<li><p>通过 <code>nrm ls</code> 查看所有支持的源</p>
+<p> <code>*</code>表示当前正在使用的源</p>
+<pre><code>C:\Users\LTC&gt;nrm ls
+
+  npm ---- https://registry.npmjs.org/
+  cnpm --- http://r.cnpmjs.org/
+* taobao - https://registry.npm.taobao.org/
+  nj ----- https://registry.nodejitsu.com/
+  rednpm - http://registry.mirror.cqupt.edu.cn/
+  npmMirror  https://skimdb.npmjs.com/registry/
+  edunpm - http://registry.enpmjs.org/
+</code></pre></li>
+<li><p>通过 <code>nrm use cnpm</code> 切换当前使用的源</p>
+<pre><code>nrm use cnpm
+
+C:\Users\LTC&gt;nrm use cnpm
+
+   Registry has been set to: http://r.cnpmjs.org/
+</code></pre></li>
+<li><p>做完以上操作后, 正常使用 <code>npm i</code> 安装你的包即可</p>
+</li>
+</ol>
+<h3 id="webpack4的基本使用"><a href="#webpack4的基本使用" class="headerlink" title="webpack4的基本使用"></a>webpack4的基本使用</h3><ol>
+<li><p>打包</p>
+<p> 会自动创建输出目录</p>
+<pre><code>webpack 入口文件 --output 输出文件
+</code></pre><p> 举例:</p>
+<pre><code>webpack main.js -o ./dist/main.js
+</code></pre><p> -d 参数可以指定当前的模式为development, 即不压缩</p>
+<pre><code>webpack main.js -o ./dist/main.js -d
+</code></pre><p> 在webpack3中不需要指定以上所有的参数, -o和-d都不需要, 但是在webpack4中必须指定 -o, 如果不指定-d默认以production模式打包, 会进行压缩, 速度较慢, 开发阶段建议不要使用</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/hexo_deploy/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -353,42 +1450,42 @@
 <p>如果不会, 自行百度</p>
 <h3 id="安装hexo相关的工具"><a href="#安装hexo相关的工具" class="headerlink" title="安装hexo相关的工具"></a>安装hexo相关的工具</h3><ol>
 <li><p>全局安装 <code>hexo-cli</code></p>
-<pre><code>npm i hexo-cli -g
-</code></pre></li>
+<p>npm i hexo-cli -g</p>
+</li>
 </ol>
 <h3 id="创建一个博客项目"><a href="#创建一个博客项目" class="headerlink" title="创建一个博客项目"></a>创建一个博客项目</h3><ol>
 <li><p>使用<code>hexo init &lt;目录名&gt;</code></p>
-<p> 下载时间较长, 比较耗时, 需要去github下载模板代码</p>
-<pre><code>hexo init hexo-blog
-</code></pre></li>
+<p>下载时间较长, 比较耗时, 需要去github下载模板代码</p>
+<p>  hexo init hexo-blog</p>
+</li>
 <li><p>使用<code>npm install</code>安装项目依赖</p>
-<pre><code>cd hexo-blog
-npm i
+<p>cd hexo-blog</p>
+<pre><code>npm i
 </code></pre></li>
 <li><p>当安装完毕后, 目录中就会有一系列文件, 其中 <code>_config.yml</code> 存放着博客的配置信息</p>
 </li>
 <li><p><code>_config.yml</code> 配置项如下:</p>
-<pre><code>title: 天成的个人博客 # 标题
-subtitle: Code is my life. # 子标题
+<p>title: 天成的个人博客 # 标题</p>
+<pre><code>subtitle: Code is my life. # 子标题
 description: Code is my life. # 描述
 keywords: Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫 # 关键词, 用于做SEO优化
 author: 李天成 # 作者
 language: zh-CN # 语言
 timezone: Asia/Shanghai # 时区
-</code></pre><p> 更多配置参见官网配置文档</p>
+</code></pre><p>更多配置参见官网配置文档</p>
 </li>
 <li><p>使用<code>hexo new &lt;文章标题&gt;</code>来写博客</p>
-<pre><code>hexo new frontend_niubi
-</code></pre><p> 执行完该命令后, 会在 <code>./source/_posts/</code>目录下新建一个 <code>frontend_niubi.md</code> 文件</p>
-<p> 之后就可以随心所欲的写笔记了!</p>
+<p>hexo new frontend_niubi</p>
+<p>执行完该命令后, 会在 <code>./source/_posts/</code>目录下新建一个 <code>frontend_niubi.md</code> 文件</p>
+<p>之后就可以随心所欲的写笔记了!</p>
 </li>
 <li><p>写完笔记后, 使用 <code>hexo g</code> 命令结合主题(配置文件中: theme: landscape)和笔记(./srouce/_posts/目录中)生成HTML/css/js静态文件 </p>
-<pre><code>hexo g
-</code></pre><p> 执行完命令后, 会在 <code>./public</code> 中生成静态文件</p>
+<p>hexo g</p>
+<p>执行完命令后, 会在 <code>./public</code> 中生成静态文件</p>
 </li>
 <li><p>最后只需要执行<code>hexo server</code> 启动服务器, 即可看到博客了!</p>
-<pre><code>hexo server
-</code></pre><p> 默认开启端口是4000, 通过 -p 可以指定端口号</p>
+<p>hexo server</p>
+<p>默认开启端口是4000, 通过 -p 可以指定端口号</p>
 <pre><code>hexo server -p 80
 </code></pre></li>
 </ol>
@@ -398,33 +1495,36 @@ timezone: Asia/Shanghai # 时区
 <li><p>在github上新建一个仓库, 仓库名必须是<code>github用户名.github.io</code></p>
 </li>
 <li><p>使用hexo的deploy功能完成项目的自动化部署</p>
-<p> 在部署之前, 一定要先配置好部署的参数</p>
-<p> hexo支持五个部署方式, 我们采取git</p>
-<p> 首先在<code>_config.yml</code>配置文件中的 <code>deploy:</code> 节点下配置一下 <code>type</code></p>
-<pre><code>deploy: 
-      type: git
-</code></pre><p> 如果使用的是git部署, 必须先装一个包:</p>
-<pre><code>npm install hexo-deployer-git --save
-</code></pre><p> 装完以后修改配置:</p>
-<pre><code>deploy:
-  type: git # 类型为git
-  repo: &lt;repository url&gt;  # 仓库地址
-  branch: [branch] # 分支名
-  message: [message] # 
-</code></pre><p> 配置完成后, 执行<code>hexo g</code> 然后执行 <code>hexo d</code></p>
-<p> hexo d是在将生成的静态文件, push到远程刚刚建好的仓库中, 而刚刚建的那个仓库正好可以通过<code>用户名.github.io</code>直接访问, 就是一个web服务器</p>
-<pre><code>hexo g
-hexo d
-</code></pre></li>
+<p>在部署之前, 一定要先配置好部署的参数</p>
+<p>hexo支持五个部署方式, 我们采取git</p>
+<p>首先在<code>_config.yml</code>配置文件中的 <code>deploy:</code> 节点下配置一下 <code>type</code></p>
+<p>  deploy: </p>
+<pre><code>type: git
+</code></pre><p>如果使用的是git部署, 必须先装一个包:</p>
+<p>  npm install hexo-deployer-git –save</p>
+<p>装完以后修改配置:</p>
+<p>  deploy:</p>
+<pre><code>type: git # 类型为git
+repo: &lt;repository url&gt;  # 仓库地址
+branch: [branch] # 分支名
+message: [message] # 
+</code></pre><p>配置完成后, 执行<code>hexo g</code> 然后执行 <code>hexo d</code></p>
+<p>hexo d是在将生成的静态文件, push到远程刚刚建好的仓库中, 而刚刚建的那个仓库正好可以通过<code>用户名.github.io</code>直接访问, 就是一个web服务器</p>
+<p>  hexo g<br>  hexo d</p>
+</li>
 </ol>
 <h2 id="设置hexo的主题"><a href="#设置hexo的主题" class="headerlink" title="设置hexo的主题"></a>设置hexo的主题</h2><p><strong>墙裂推荐next主题, 不接受反驳!!!</strong></p>
 <ol>
 <li><p>安装</p>
-<p> 进入hexo博客的目录</p>
-<pre><code>cd hexo-blog
-</code></pre><p> 将next的源码克隆到当前目录的themes目录下</p>
-<pre><code>git clone https://github.com/theme-next/hexo-theme-next themes/next
-</code></pre><p> 修改配置文件的 <code>themes: next</code></p>
+<p>进入hexo博客的目录</p>
+<p>  cd hexo-blog</p>
+<p>将next的源码克隆到当前目录的themes目录下</p>
+<p>  git clone <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a> themes/next</p>
+<p>修改配置文件的 <code>themes: next</code></p>
+</li>
+<li><p>执行 <code>hexo g</code> 编译静态资源</p>
+</li>
+<li><p>执行 <code>hexo d</code> 部署博客</p>
 </li>
 </ol>
 
@@ -1867,7 +2967,7 @@ Vue.config.keyCodes.f2 = 113
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1917,7 +3017,7 @@ Vue.config.keyCodes.f2 = 113
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

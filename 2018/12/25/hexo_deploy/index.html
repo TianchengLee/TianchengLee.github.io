@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="使用hexo部署一个博客服务器环境准备 安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具 全局安装 hexo-cli npm i hexo-cli -g   创建一个博客项目 使用hexo init &amp;lt;目录名&amp;gt;  下载时间较长, 比较耗时, 需要去github下载模板代码 hexo init hexo-blog  使用npm install安装项目依赖 c">
+<meta name="description" content="使用hexo部署一个博客服务器环境准备 安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具 全局安装 hexo-cli npm i hexo-cli -g   创建一个博客项目 使用hexo init &amp;lt;目录名&amp;gt; 下载时间较长, 比较耗时, 需要去github下载模板代码   hexo init hexo-blog  使用npm install安装项目依赖">
 <meta name="keywords" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hexo部署一个博客服务器">
 <meta property="og:url" content="http://localhost:4000/2018/12/25/hexo_deploy/index.html">
 <meta property="og:site_name" content="天成的个人博客">
-<meta property="og:description" content="使用hexo部署一个博客服务器环境准备 安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具 全局安装 hexo-cli npm i hexo-cli -g   创建一个博客项目 使用hexo init &amp;lt;目录名&amp;gt;  下载时间较长, 比较耗时, 需要去github下载模板代码 hexo init hexo-blog  使用npm install安装项目依赖 c">
+<meta property="og:description" content="使用hexo部署一个博客服务器环境准备 安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具 全局安装 hexo-cli npm i hexo-cli -g   创建一个博客项目 使用hexo init &amp;lt;目录名&amp;gt; 下载时间较长, 比较耗时, 需要去github下载模板代码   hexo init hexo-blog  使用npm install安装项目依赖">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-25T14:42:08.399Z">
+<meta property="og:updated_time" content="2019-01-04T06:20:52.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo部署一个博客服务器">
-<meta name="twitter:description" content="使用hexo部署一个博客服务器环境准备 安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具 全局安装 hexo-cli npm i hexo-cli -g   创建一个博客项目 使用hexo init &amp;lt;目录名&amp;gt;  下载时间较长, 比较耗时, 需要去github下载模板代码 hexo init hexo-blog  使用npm install安装项目依赖 c">
+<meta name="twitter:description" content="使用hexo部署一个博客服务器环境准备 安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具 全局安装 hexo-cli npm i hexo-cli -g   创建一个博客项目 使用hexo init &amp;lt;目录名&amp;gt; 下载时间较长, 比较耗时, 需要去github下载模板代码   hexo init hexo-blog  使用npm install安装项目依赖">
 
 
 
@@ -349,42 +349,42 @@
 <p>如果不会, 自行百度</p>
 <h3 id="安装hexo相关的工具"><a href="#安装hexo相关的工具" class="headerlink" title="安装hexo相关的工具"></a>安装hexo相关的工具</h3><ol>
 <li><p>全局安装 <code>hexo-cli</code></p>
-<pre><code>npm i hexo-cli -g
-</code></pre></li>
+<p>npm i hexo-cli -g</p>
+</li>
 </ol>
 <h3 id="创建一个博客项目"><a href="#创建一个博客项目" class="headerlink" title="创建一个博客项目"></a>创建一个博客项目</h3><ol>
 <li><p>使用<code>hexo init &lt;目录名&gt;</code></p>
-<p> 下载时间较长, 比较耗时, 需要去github下载模板代码</p>
-<pre><code>hexo init hexo-blog
-</code></pre></li>
+<p>下载时间较长, 比较耗时, 需要去github下载模板代码</p>
+<p>  hexo init hexo-blog</p>
+</li>
 <li><p>使用<code>npm install</code>安装项目依赖</p>
-<pre><code>cd hexo-blog
-npm i
+<p>cd hexo-blog</p>
+<pre><code>npm i
 </code></pre></li>
 <li><p>当安装完毕后, 目录中就会有一系列文件, 其中 <code>_config.yml</code> 存放着博客的配置信息</p>
 </li>
 <li><p><code>_config.yml</code> 配置项如下:</p>
-<pre><code>title: 天成的个人博客 # 标题
-subtitle: Code is my life. # 子标题
+<p>title: 天成的个人博客 # 标题</p>
+<pre><code>subtitle: Code is my life. # 子标题
 description: Code is my life. # 描述
 keywords: Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫 # 关键词, 用于做SEO优化
 author: 李天成 # 作者
 language: zh-CN # 语言
 timezone: Asia/Shanghai # 时区
-</code></pre><p> 更多配置参见官网配置文档</p>
+</code></pre><p>更多配置参见官网配置文档</p>
 </li>
 <li><p>使用<code>hexo new &lt;文章标题&gt;</code>来写博客</p>
-<pre><code>hexo new frontend_niubi
-</code></pre><p> 执行完该命令后, 会在 <code>./source/_posts/</code>目录下新建一个 <code>frontend_niubi.md</code> 文件</p>
-<p> 之后就可以随心所欲的写笔记了!</p>
+<p>hexo new frontend_niubi</p>
+<p>执行完该命令后, 会在 <code>./source/_posts/</code>目录下新建一个 <code>frontend_niubi.md</code> 文件</p>
+<p>之后就可以随心所欲的写笔记了!</p>
 </li>
 <li><p>写完笔记后, 使用 <code>hexo g</code> 命令结合主题(配置文件中: theme: landscape)和笔记(./srouce/_posts/目录中)生成HTML/css/js静态文件 </p>
-<pre><code>hexo g
-</code></pre><p> 执行完命令后, 会在 <code>./public</code> 中生成静态文件</p>
+<p>hexo g</p>
+<p>执行完命令后, 会在 <code>./public</code> 中生成静态文件</p>
 </li>
 <li><p>最后只需要执行<code>hexo server</code> 启动服务器, 即可看到博客了!</p>
-<pre><code>hexo server
-</code></pre><p> 默认开启端口是4000, 通过 -p 可以指定端口号</p>
+<p>hexo server</p>
+<p>默认开启端口是4000, 通过 -p 可以指定端口号</p>
 <pre><code>hexo server -p 80
 </code></pre></li>
 </ol>
@@ -394,33 +394,36 @@ timezone: Asia/Shanghai # 时区
 <li><p>在github上新建一个仓库, 仓库名必须是<code>github用户名.github.io</code></p>
 </li>
 <li><p>使用hexo的deploy功能完成项目的自动化部署</p>
-<p> 在部署之前, 一定要先配置好部署的参数</p>
-<p> hexo支持五个部署方式, 我们采取git</p>
-<p> 首先在<code>_config.yml</code>配置文件中的 <code>deploy:</code> 节点下配置一下 <code>type</code></p>
-<pre><code>deploy: 
-      type: git
-</code></pre><p> 如果使用的是git部署, 必须先装一个包:</p>
-<pre><code>npm install hexo-deployer-git --save
-</code></pre><p> 装完以后修改配置:</p>
-<pre><code>deploy:
-  type: git # 类型为git
-  repo: &lt;repository url&gt;  # 仓库地址
-  branch: [branch] # 分支名
-  message: [message] # 
-</code></pre><p> 配置完成后, 执行<code>hexo g</code> 然后执行 <code>hexo d</code></p>
-<p> hexo d是在将生成的静态文件, push到远程刚刚建好的仓库中, 而刚刚建的那个仓库正好可以通过<code>用户名.github.io</code>直接访问, 就是一个web服务器</p>
-<pre><code>hexo g
-hexo d
-</code></pre></li>
+<p>在部署之前, 一定要先配置好部署的参数</p>
+<p>hexo支持五个部署方式, 我们采取git</p>
+<p>首先在<code>_config.yml</code>配置文件中的 <code>deploy:</code> 节点下配置一下 <code>type</code></p>
+<p>  deploy: </p>
+<pre><code>type: git
+</code></pre><p>如果使用的是git部署, 必须先装一个包:</p>
+<p>  npm install hexo-deployer-git –save</p>
+<p>装完以后修改配置:</p>
+<p>  deploy:</p>
+<pre><code>type: git # 类型为git
+repo: &lt;repository url&gt;  # 仓库地址
+branch: [branch] # 分支名
+message: [message] # 
+</code></pre><p>配置完成后, 执行<code>hexo g</code> 然后执行 <code>hexo d</code></p>
+<p>hexo d是在将生成的静态文件, push到远程刚刚建好的仓库中, 而刚刚建的那个仓库正好可以通过<code>用户名.github.io</code>直接访问, 就是一个web服务器</p>
+<p>  hexo g<br>  hexo d</p>
+</li>
 </ol>
 <h2 id="设置hexo的主题"><a href="#设置hexo的主题" class="headerlink" title="设置hexo的主题"></a>设置hexo的主题</h2><p><strong>墙裂推荐next主题, 不接受反驳!!!</strong></p>
 <ol>
 <li><p>安装</p>
-<p> 进入hexo博客的目录</p>
-<pre><code>cd hexo-blog
-</code></pre><p> 将next的源码克隆到当前目录的themes目录下</p>
-<pre><code>git clone https://github.com/theme-next/hexo-theme-next themes/next
-</code></pre><p> 修改配置文件的 <code>themes: next</code></p>
+<p>进入hexo博客的目录</p>
+<p>  cd hexo-blog</p>
+<p>将next的源码克隆到当前目录的themes目录下</p>
+<p>  git clone <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a> themes/next</p>
+<p>修改配置文件的 <code>themes: next</code></p>
+</li>
+<li><p>执行 <code>hexo g</code> 编译静态资源</p>
+</li>
+<li><p>执行 <code>hexo d</code> 部署博客</p>
 </li>
 </ol>
 
@@ -456,6 +459,10 @@ hexo d
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/26/vueday06/" rel="prev" title="vueday06">
+                vueday06 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,7 +542,7 @@ hexo d
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -601,7 +608,7 @@ hexo d
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
