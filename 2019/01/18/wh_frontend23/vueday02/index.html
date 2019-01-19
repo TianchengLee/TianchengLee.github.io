@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="vue day01hello vuevue就是一个js文件而已  新建HTML页面, 引入vue.js文件 &amp;lt;script src=&amp;quot;./lib/vue-2.4.0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  在页面中准备一个Vue的控制区域 &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;      创建Vue实例 var vm">
+<meta name="description" content="vue day02指令v-modelVue提供的双向数据绑定的指令, 在Vue中也只有唯一这一个属性可以提供双向数据绑定 &amp;lt;!-- v-bind只能实现单向绑定 --&amp;gt; &amp;lt;!-- &amp;lt;input :aaa=&amp;quot;msg&amp;quot; :value=&amp;quot;msg&amp;quot; type=&amp;quot;text&amp;quot;&amp;gt; --&amp;gt;  &amp;lt;!-- 为什么v-">
 <meta name="keywords" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vueday01">
-<meta property="og:url" content="http://localhost:4000/2018/12/25/vueday01/index.html">
+<meta property="og:title" content="vueday02">
+<meta property="og:url" content="http://localhost:4000/2019/01/18/wh_frontend23/vueday02/index.html">
 <meta property="og:site_name" content="天成的个人博客">
-<meta property="og:description" content="vue day01hello vuevue就是一个js文件而已  新建HTML页面, 引入vue.js文件 &amp;lt;script src=&amp;quot;./lib/vue-2.4.0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  在页面中准备一个Vue的控制区域 &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;      创建Vue实例 var vm">
+<meta property="og:description" content="vue day02指令v-modelVue提供的双向数据绑定的指令, 在Vue中也只有唯一这一个属性可以提供双向数据绑定 &amp;lt;!-- v-bind只能实现单向绑定 --&amp;gt; &amp;lt;!-- &amp;lt;input :aaa=&amp;quot;msg&amp;quot; :value=&amp;quot;msg&amp;quot; type=&amp;quot;text&amp;quot;&amp;gt; --&amp;gt;  &amp;lt;!-- 为什么v-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-19T11:26:49.243Z">
+<meta property="og:updated_time" content="2019-01-19T11:39:38.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vueday01">
-<meta name="twitter:description" content="vue day01hello vuevue就是一个js文件而已  新建HTML页面, 引入vue.js文件 &amp;lt;script src=&amp;quot;./lib/vue-2.4.0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  在页面中准备一个Vue的控制区域 &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;      创建Vue实例 var vm">
+<meta name="twitter:title" content="vueday02">
+<meta name="twitter:description" content="vue day02指令v-modelVue提供的双向数据绑定的指令, 在Vue中也只有唯一这一个属性可以提供双向数据绑定 &amp;lt;!-- v-bind只能实现单向绑定 --&amp;gt; &amp;lt;!-- &amp;lt;input :aaa=&amp;quot;msg&amp;quot; :value=&amp;quot;msg&amp;quot; type=&amp;quot;text&amp;quot;&amp;gt; --&amp;gt;  &amp;lt;!-- 为什么v-">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://localhost:4000/2018/12/25/vueday01/">
+  <link rel="canonical" href="http://localhost:4000/2019/01/18/wh_frontend23/vueday02/">
 
 
 
 
 
-  <title>vueday01 | 天成的个人博客</title>
+  <title>vueday02 | 天成的个人博客</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/12/25/vueday01/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/01/18/wh_frontend23/vueday02/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李天成">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vueday01</h1>
+          <h1 class="post-title" itemprop="name headline">vueday02</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T00:56:13+08:00">
-                2018-12-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-18T18:00:00+08:00">
+                2019-01-18
               </time>
             
 
@@ -295,8 +295,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/武汉前端22期/" itemprop="url" rel="index">
-                    <span itemprop="name">武汉前端22期</span>
+                  <a href="/categories/武汉前端23期/" itemprop="url" rel="index">
+                    <span itemprop="name">武汉前端23期</span>
                   </a>
                 </span>
 
@@ -313,8 +313,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/25/vueday01/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/25/vueday01/" itemprop="commentCount"></span>
+                <a href="/2019/01/18/wh_frontend23/vueday02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/18/wh_frontend23/vueday02/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -342,101 +342,79 @@
       
 
       
-        <h2 id="vue-day01"><a href="#vue-day01" class="headerlink" title="vue day01"></a>vue day01</h2><h3 id="hello-vue"><a href="#hello-vue" class="headerlink" title="hello vue"></a>hello vue</h3><p>vue就是一个js文件而已</p>
-<ol>
-<li><p>新建HTML页面, 引入vue.js文件</p>
-<pre><code>&lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
-</code></pre></li>
-<li><p>在页面中准备一个Vue的控制区域</p>
-<pre><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;    
-</code></pre></li>
-<li><p>创建Vue实例</p>
-<pre><code>var vm = new Vue({
-  el: &apos;#app&apos;,
-  data: {
-    hello: &apos;你好啊vuejs!&apos;
-  }
-})
-</code></pre></li>
-<li><p>在app控制区域中使用vue的指令或者插值表达式将hello数据渲染到页面</p>
-<p> 插值表达式:</p>
-<pre><code>&lt;div id=&quot;app&quot;&gt;
-    &lt;p&gt;
-        {{ hello }}
-    &lt;/p&gt;
-&lt;/div&gt;
-</code></pre><p> v-text:</p>
-<pre><code>&lt;p v-text=&quot;hello&quot;&gt;&lt;/p&gt;
-</code></pre><p> v-html:</p>
-<pre><code>&lt;p v-html=&quot;hello&quot;&gt;&lt;/p&gt;
-</code></pre><p> 如果hello数据中有HTML标签, v-html会解析HTML标签, 而v-text会直接将其解析成纯文本输出</p>
-</li>
-</ol>
-<h3 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h3><p>在vue中, 一切以 <code>v-</code> 开头的都是指令: directive</p>
-<p>插值表达式, Mustache语法也被称为小胡子语法:</p>
-<pre><code>{{ msg }}
-</code></pre><ol>
-<li><p>v-cloak</p>
-<p> 了解即可, 可以结合css解决插值表达式闪烁的问题, 让标签元素默认隐藏, v-cloak的特点是当数据渲染完成后自动显示</p>
-</li>
-<li><p>v-text</p>
-<p> 将数据以<strong>纯文本</strong>的方式渲染到指定标签内部, 会直接覆盖标签内部的内容</p>
-</li>
-<li><p>v-html</p>
-<p> 同v-text, 区别在于可以渲染<strong>HTML标签</strong></p>
-</li>
-<li><p>v-bind</p>
-<p> 做属性绑定的指令, 在标签中绑定title属性: 如果使用了属性绑定, 属性值就会被解析成JS表达式, 所以msg必须在vm实例的data中定义好, 否则会报错</p>
-<pre><code>&lt;input v-bind:title=&quot;msg&quot; /&gt;
-</code></pre><p> 该指令使用非常频繁, 所以有简写形式 是 冒号  <code>:</code></p>
-<pre><code>&lt;input :title=&quot;msg&quot; /&gt;
-</code></pre><p> 而且v-bind可以绑定原生的dom属性, 也可以绑定自定义属性</p>
-</li>
-<li><p>v-on</p>
-<p> 做事件绑定的指令, 简写形式 是 艾特符号 <code>@</code></p>
-<pre><code>&lt;input @mouseover=&quot;clickHandler&quot; v-on:click=&quot;clickHandler&quot; /&gt;
-</code></pre><p> <code>clickHandler</code>必须在vue实例的 methods 节点中定义</p>
-<pre><code>var vm = new Vue({
-  el: &apos;#app&apos;,
-  methods: {
-    clickHandler() {
-      console.log(&apos;秀!&apos;)
-    }
-  }
-})
-</code></pre><p> 如果需要绑定其他事件, 将click换成其他事件名即可</p>
-</li>
-<li><p>v-model</p>
-<p> <strong>注意: 这是唯一一个实现双向数据绑定的指令, 而且只能用于表单元素, 不需要指定属性, 只能绑定value属性</strong></p>
-<pre><code>&lt;input type=&quot;text&quot; style=&quot;width:100%;&quot; v-model=&quot;msg&quot;&gt;
-</code></pre><p> 如果双向数据绑定, 一定要先在data中定义好msg</p>
-</li>
-</ol>
-<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>事件修饰符在事件绑定时, 加在事件名后面</p>
-<pre><code>&lt;input @click.stop=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
-</code></pre><p>事件修饰符可以串联加多个</p>
-<pre><code>&lt;input @click.stop.prevent=&quot;roll&quot; type=&quot;button&quot; value=&quot;动起来&quot;&gt;
-</code></pre><ol>
-<li><p>阻止冒泡</p>
-<p> .stop</p>
-</li>
-<li><p>阻止浏览器默认行为</p>
-<p> .prevent</p>
-</li>
-<li><p>使用捕获, 等同于 <code>addEventListener()</code> 第三个参数传入true的效果</p>
-<p> .capture</p>
-</li>
-<li><p>只有点击当前元素自身才会触发事件, 如果通过冒泡或者捕获传递过来的事件不会触发</p>
-<p> .self</p>
-</li>
-<li><p>只触发一次</p>
-<p> .once</p>
-</li>
-<li><p>在移动端使用scroll事件时建议加上, 可以提高性能</p>
-<p> .passive</p>
-</li>
-</ol>
+        <h2 id="vue-day02"><a href="#vue-day02" class="headerlink" title="vue day02"></a>vue day02</h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><h4 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h4><p>Vue提供的双向数据绑定的指令, 在Vue中也只有唯一这一个属性可以提供双向数据绑定</p>
+<pre><code>&lt;!-- v-bind只能实现单向绑定 --&gt;
+&lt;!-- &lt;input :aaa=&quot;msg&quot; :value=&quot;msg&quot; type=&quot;text&quot;&gt; --&gt;
 
+&lt;!-- 为什么v-model不需要手动指定要绑定的属性呢??? --&gt;
+&lt;!-- 由于用户与input交互时, 修改的都是value属性的值, 所以v-model只能绑定value属性 --&gt;
+&lt;!-- v-model 除了可以从M层绑定到V层, 还可以在用户修改value属性时 自动同步回M层 --&gt;
+&lt;input v-model=&quot;msg&quot; type=&quot;text&quot;&gt;
+</code></pre><h4 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h4><p>在Vue中可以迭代的类型有:</p>
+<pre><code>数组
+
+对象
+
+数字
+</code></pre><ol>
+<li><p>迭代数组</p>
+<p> 数组中有多少个元素, 就会循环创建多少个p</p>
+<p> item表示数组中的每一项</p>
+<pre><code>&lt;p v-for=&quot;item in list&quot;&gt;{{ item }}&lt;/p&gt;
+</code></pre><p> index表示数组中的每一项对应的索引</p>
+<pre><code>&lt;p v-for=&quot;(item, index) in list&quot;&gt;{{ item }}&lt;/p&gt;
+</code></pre></li>
+<li><p>迭代对象</p>
+<p> 对象中有多少个属性, 就会循环创建多少个p</p>
+<pre><code>&lt;p v-for=&quot;(value, key) in obj&quot;&gt;{{ key }} --- {{ value }}&lt;/p&gt;
+</code></pre></li>
+<li><p>迭代数字</p>
+<p> 迭代的数字有多大, 就会循环创建多少个p</p>
+<p> <strong>注意: v-for迭代数字时, num从1开始, 到10结束</strong></p>
+<pre><code>&lt;p v-for=&quot;num in 10&quot;&gt;{{ num }}&lt;/p&gt;
+</code></pre></li>
+</ol>
+<p>注意事项: v-for中的key属性, 在v-for循环渲染列表后, 如果每个单项中都有状态类型的表单元素, 例如: checkbox, 此时数据顺序发生变化后, 默认不会记录每个单项的状态, 会导致checkbox勾选状态出现混乱</p>
+<h4 id="v-for的原理"><a href="#v-for的原理" class="headerlink" title="v-for的原理"></a>v-for的原理</h4><blockquote>
+<p>当 Vue.js 用 <code>v-for</code> 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。</p>
+</blockquote>
+<p>key的作用就是将当前的数据与当前对应的DOM元素进行绑定, 以后如果数据顺序发生变化, Vue会在内部重新排序 然后渲染</p>
+<p>如果实在无法理解原理, 那就记住 以后只要用v-for, 都使用 <code>:key</code>, 给key绑定一个唯一标识, 可以是 <code>number/string</code></p>
+<h4 id="v-if和v-show"><a href="#v-if和v-show" class="headerlink" title="v-if和v-show"></a>v-if和v-show</h4><p>v-if和v-show都是用于控制元素的显示隐藏的</p>
+<p>区别在于: v-if有较高的切换性能消耗, v-show有较高的初始渲染消耗</p>
+<p>因为, v-if如果表达式是false, 元素压根不会创建, 而v-show如果表达式结果是false, 元素也会创建只是把display设为了none</p>
+<pre><code>&lt;h3 v-if=&quot;flag&quot;&gt;这是用v-if控制的元素&lt;/h3&gt;
+&lt;h3 v-show=&quot;flag&quot;&gt;这是用v-show控制的元素&lt;/h3&gt;
+</code></pre><h3 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h3><p>以前在DOM阶段操作样式的两种方法:</p>
+<pre><code>dom.style.backgroundColor // 行内样式
+
+dom.className // 设置类样式名, 结合css选择器完成
+</code></pre><p>在Vue中同样也是两种方法操作样式:</p>
+<h4 id="在Vue中动态绑定类样式"><a href="#在Vue中动态绑定类样式" class="headerlink" title="在Vue中动态绑定类样式"></a>在Vue中动态绑定类样式</h4><p>不用属性绑定, 设置固定的类样式</p>
+<pre><code>&lt;p class=&quot;red active&quot;&gt;&lt;/p&gt;
+</code></pre><p>如果需要动态修改类样式, 则需要使用属性绑定</p>
+<p>属性绑定类样式可以为数组或对象</p>
+<ol>
+<li><p>绑定数组</p>
+<p> 现在虽然是使用属性绑定了, 但是依然是写死了, 没有实现的动态的切换</p>
+<pre><code>&lt;p :class=&quot;[&apos;red&apos;, &apos;active&apos;]&quot;&gt;&lt;/p&gt;
+</code></pre><p> 动态切换有两种方式, 可以使用三元表达式来决定是否要动态添加数组元素</p>
+<pre><code>&lt;p :class=&quot;[&apos;red&apos;, flag ? &apos;active&apos; : &apos;&apos;]&quot;&gt;&lt;/p&gt;
+</code></pre><p> 推荐以下方法:</p>
+<pre><code>&lt;p :class=&quot;[&apos;red&apos;, { active: flag }]&quot;&gt;&lt;/p&gt;
+</code></pre></li>
+<li><p>绑定对象</p>
+<p> 当flag1为true时应用red类样式, 否则不应用</p>
+<p> 当flag2位true时应用active类样式, 否则不应用</p>
+<pre><code>&lt;p :class=&quot;{ red: flag1, active: flag2 }&quot;&gt;&lt;/p&gt;
+</code></pre></li>
+</ol>
+<p><strong>总结: 当类样式较多, 而需要动态切换的类名只有一个时, 推荐使用绑定数组的方式来实现动态切换, 反之, 当类样式较少, 而都需要动态切换类名时, 使用对象较为方便</strong></p>
+<h4 id="操作行内样式"><a href="#操作行内样式" class="headerlink" title="操作行内样式"></a>操作行内样式</h4><p>给 <code>style</code> 属性进行 v-bind 绑定</p>
+<pre><code>&lt;p :style=&quot;{ &apos;background-color&apos;: &apos;pink&apos;, color: &apos;black&apos; }&quot;&gt;&lt;/p&gt;
+</code></pre><p>通过绑定数组, 可以同时绑定多个样式对象</p>
+<pre><code>&lt;p :style=&quot;[ 样式对象1, 样式对象2 ]&quot;&gt;&lt;/p&gt;
+</code></pre><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3>
       
     </div>
     
@@ -460,15 +438,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/12/29/vueday08/" rel="next" title="vueday08">
+                <i class="fa fa-chevron-left"></i> vueday08
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/25/vueday02/" rel="prev" title="vueday02">
-                vueday02 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -594,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-day01"><span class="nav-number">1.</span> <span class="nav-text">vue day01</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hello-vue"><span class="nav-number">1.1.</span> <span class="nav-text">hello vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础指令"><span class="nav-number">1.2.</span> <span class="nav-text">基础指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件修饰符"><span class="nav-number">1.3.</span> <span class="nav-text">事件修饰符</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-day02"><span class="nav-number">1.</span> <span class="nav-text">vue day02</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指令"><span class="nav-number">1.1.</span> <span class="nav-text">指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-number">1.1.1.</span> <span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for"><span class="nav-number">1.1.2.</span> <span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for的原理"><span class="nav-number">1.1.3.</span> <span class="nav-text">v-for的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-if和v-show"><span class="nav-number">1.1.4.</span> <span class="nav-text">v-if和v-show</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式操作"><span class="nav-number">1.2.</span> <span class="nav-text">样式操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在Vue中动态绑定类样式"><span class="nav-number">1.2.1.</span> <span class="nav-text">在Vue中动态绑定类样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作行内样式"><span class="nav-number">1.2.2.</span> <span class="nav-text">操作行内样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器"><span class="nav-number">1.3.</span> <span class="nav-text">过滤器</span></a></li></ol></li></ol></div>
             
 
           </div>
