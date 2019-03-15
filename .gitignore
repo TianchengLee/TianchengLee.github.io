@@ -1,2 +1,4 @@
-_book
+*.DS_Store
+.idea
+.vscode
 node_modules
